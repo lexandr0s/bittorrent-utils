@@ -1,0 +1,27 @@
+{
+  "name": "bittorrent-utils",
+  "version": "1.1.4",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev-manual-transfer": "nodemon ./src/manualTransfer.js",
+    "manual-transfer": "cross-env NODE_ENV=production node ./src/manualTransfer.js"
+  },
+  "author": "Yaroslav Sorochan <yaroslav.sorochan.i@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.3.7",
+    "@grpc/proto-loader": "^0.6.4",
+    "colors": "^1.4.0",
+    "config": "^3.3.6",
+    "cross-env": "^7.0.3",
+    "node-fetch": "^2.6.1",
+    "protobufjs": "^6.11.2",
+    "secp256k1": "^4.0.2"
+  }
+}
