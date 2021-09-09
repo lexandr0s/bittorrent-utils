@@ -23,7 +23,7 @@ module.exports = {
     RECIPIENT: "BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=",
     // Transfer attempt interval in seconds. Set this to 0 to disable
     AUTOTRANSFER_INTERVAL_SECONDS: 5,
-    // Array of BitTorrent / μTorrent credentials
+    // Array of BitTorrent / μTorrent credentials for autoremoving torrents
     CLIENTS: [{
         GUI_URL: 'http://localhost:8080/gui/', // BitTorrent / μTorrent WebUI url
         USERNAME: 'yourusername',              // BitTorrent / μTorrent WebUI username
