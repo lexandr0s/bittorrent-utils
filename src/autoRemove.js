@@ -1,9 +1,7 @@
 const path = require('path')
 const config = require('config')
 const BitTorrent = require('./libs/BitTorrent.js')
-const {log} = require('./libs/utils.js')
-
-const isProduction = process.env.NODE_ENV === 'production'
+const {isProduction, log} = require('./libs/utils.js')
 
 const clients = Promise.all(config.get('CLIENTS').map(async client => {
     const bitTorrent = await new BitTorrent({

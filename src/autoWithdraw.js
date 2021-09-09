@@ -1,16 +1,28 @@
 const fetch = require('node-fetch')
+const URL = require('url').URL
+const {isProduction} = require('./libs/utils.js')
+const config = require('config')
 
-module.exports.start = async () => {
-    const start = new Date()
+const url = new URL('https://api.trongrid.io/v1/accounts/TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5/transactions/')
+url.searchParams.set('limit', 1)
+url.searchParams.set('only_from', true)
+// url.searchParams.set('only_confirmed', true)
+// url.searchParams.set('min_timestamp', new Date() - 100000)
+url.searchParams.set('order_by', 'timestamp,desc')
 
-    const response = await fetch('https://api.trongrid.io/v1/accounts/41c109c53d081d1baf2aa792c7eef5b3a76df4f711/transactions/?limit=1&only_from=true&only_confirmed=true')
+async function autoWidthdraw() {
+    const response = await fetch(url.href)
     const body = await response.json();
-    const blockTimestamp = body.data[0].block_timestamp
-    const lastTransactionAge = new Date() - blockTimestamp
+    
+    if (body.data.length) {
+        const transaction = body.data[0]
+        console.log((new Date() - transaction.block_timestamp) / 1000, transaction.txID)
+    } else {
+        console.log(response.statusText)
+    }
 
-    // console.log(body.data[0].raw_data)
-
-    console.log(lastTransactionAge / 1000)
 }
 
-// setInterval(module.exports.start, 1000)
+module.exports.start = async () => {
+    setInterval(autoWidthdraw, config.get('AUTOWITHDRAW_INTERVAL_SECONDS') * 1000)
+}

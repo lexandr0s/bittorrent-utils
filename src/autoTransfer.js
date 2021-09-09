@@ -1,8 +1,7 @@
 const process = require('process')
 const config = require('config')
 const transfer = require('./libs/transfer.js')
-
-const isProduction = process.env.NODE_ENV === 'production'
+const {isProduction} = require('./libs/utils.js')
 
 const payers = config.get('PAYERS')
 const recipient = config.get('RECIPIENT')
