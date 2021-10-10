@@ -38,7 +38,6 @@ module.exports = {
         ul_slots_per_torrent: 1,
         encryption_mode: 1,
         seed_ratio: 0,
-        max_ul_rate_seed: 2048,
         max_dl_rate: 3072,
         max_ul_rate: 2048,
         rand_port_on_start: true,
