@@ -24,6 +24,8 @@ module.exports = {
     PEERS_FILTER_BITTORRENT_VERSION: '>=7.10.5',
     // Permitted μTorrent versions range (syntax: https://github.com/npm/node-semver#ranges)
     PEERS_FILTER_UTORRENT_VERSION: '>=3.5.5',
+    // Permitted libtorrent (BitTorrent & μTorrent Web) versions range (syntax: https://github.com/npm/node-semver#ranges)
+    PEERS_FILTER_LIBTORRENT_VERSION: '>=1.2.2',
     // Max length of banlist
     PEERS_FILTER_BANLIST_MAX_LENGTH: 1000,
 

@@ -29,12 +29,13 @@ const filterPeers = async (client, clientIndex) => {
     const torrentList = await client.getList()
     const peerList = await client.getPeers(torrentList.map(torrent => torrent.hash))
     const parseVersion = (clientName) => {
-        const match = clientName.match(/(?:\d+\.?)+/)
+        const match = clientName.match(/\d+\.\d+\.\d+/)
         return match ? match[0] : null
     }
     const peersToBan = peerList.reduce((acc, peer) => {
         if (peer.client.includes('μTorrent') && semver.satisfies(parseVersion(peer.client), config.get('PEERS_FILTER_UTORRENT_VERSION'))) return acc
         else if (peer.client.includes('BitTorrent') && semver.satisfies(parseVersion(peer.client), config.get('PEERS_FILTER_BITTORRENT_VERSION'))) return acc
+        else if (peer.client.includes('libtorrent') && semver.satisfies(parseVersion(peer.client), config.get('PEERS_FILTER_LIBTORRENT_VERSION'))) return acc
         else return [...acc, peer]
     }, [])
     if (peersToBan.length) {
