@@ -469,4 +469,4 @@ http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/refresh_balance
 
 **THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.**
 
-#### License - [MIT](https://github.com/UkrainianHulk/bittorrent-utils/blob/main/LICENSE) 
+#### [MIT License](https://github.com/UkrainianHulk/bittorrent-utils/blob/main/LICENSE) 
