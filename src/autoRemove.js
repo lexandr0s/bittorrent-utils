@@ -1,21 +1,26 @@
 const path = require('path')
 const config = require('config')
 const BitTorrent = require('./libs/BitTorrent.js')
-const {log} = require('./libs/utils.js')
+const {iteration, log} = require('./libs/utils.js')
 
-const isProduction = process.env.NODE_ENV === 'production'
+const bytesToGB = (bytes) => bytes / 1000 / 1000 / 1000
+const GBtoBytes = (gb) => gb * 1000 * 1000 * 1000
 
-const clients = Promise.all(config.get('CLIENTS').map(async client => {
-    const bitTorrent = await new BitTorrent({
-        guiUrl: client.GUI_URL,
-        username: client.USERNAME,
-        password: client.PASSWORD
-    }).login()
-    bitTorrent.quota = client.GB_QUOTA * 1024 * 1024 * 1024
-    return bitTorrent
-}))
-
-const bytesToGB = (bytes) => Math.round(bytes / 1024 / 1024 / 1024 * 100) / 100
+const getClient = async (credentials, clientIndex) => {
+    try {
+        const client = await new BitTorrent({
+            guiUrl: credentials.GUI_URL,
+            username: credentials.USERNAME,
+            password: credentials.PASSWORD
+        }).login()
+        log.info(`Cleint #${clientIndex} logged in as ${client.USERNAME}`)
+        client.quota = GBtoBytes(credentials.SPACE_QUOTA_PER_DRIVE_GB ? credentials.SPACE_QUOTA_PER_DRIVE_GB : config.get('AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB'))
+        return client
+    } catch (error) { 
+        log.error(`Cleint #${clientIndex}: ${error.message}`)
+        return null
+    }
+}
 
 const getlistsByDisk = (list) => list.reduce((acc, torrent) => {
     const torrentRoot = path.parse(torrent.path).root
@@ -35,52 +40,45 @@ const sortTorrents = (list) => list.map(item => {
     const seedingDurationDays = (Date.now() / 1000 - item.added) / 60 / 60 / 24
     const uploadRatio = item.ratio / 1000
     const seedsRatio = item.seedsInSwarm / item.peersInSwarm
-   
     if (!seedsRatio) item.coefficient = 0
     else item.coefficient = Math.round(uploadRatio / seedsRatio * 100000 / Math.pow(seedingDurationDays + 1, 2)) / 1000
-    
     item.seedsRatio = Math.round(seedsRatio * 1000) / 1000
-
     return item
 }).sort((a, b) => b.coefficient - a.coefficient)
 
-async function autoRemove(client, clientIndex) {
+const autoRemove = async (client, clientIndex) => {
     const list = await client.getList()
     const listsByDisk = getlistsByDisk(list)
-
-    for (let disk in listsByDisk) {
-        const totalSize = listsByDisk[disk].totalSize
-
+    for (let drive in listsByDisk) {
+        const totalSize = listsByDisk[drive].totalSize
         if (totalSize > client.quota) {
-            const sortedList = sortTorrents(listsByDisk[disk].torrents)
+            const sortedList = sortTorrents(listsByDisk[drive].torrents)
             const exccess = totalSize - client.quota
             const torrentsToRemove = []
-
             do {
                 const torrent = sortedList.pop()
-                
                 if (torrent.coefficient === 0) continue
-
                 torrentsToRemove.push(torrent)
-
             } while (torrentsToRemove.reduce((acc, torrent) => acc += torrent.size, 0) < exccess)
-
-            log(`[autoRemove] Client #${clientIndex}, disk ${disk}, exccess ${bytesToGB(exccess)}GB, removing torrents:`)
-
+            log.info(`Client #${clientIndex}, ${drive} - ${bytesToGB(totalSize).toFixed(2)}/${bytesToGB(client.quota).toFixed(2)}GB, exccess ${bytesToGB(exccess).toFixed(2)}GB, torrents to remove:`)
             console.table(torrentsToRemove.map(t => ({name: t.name,
-                disk: disk,
-                size: bytesToGB(t.size) + ' GB',
+                drive: drive,
+                size: bytesToGB(t.size).toFixed(2) + ' GB',
                 ratio: t.ratio / 1000, seedsRatio: t.seedsRatio,
-                coefficient: t.coefficient
+                coefficient: t.coefficient,
+                added: new Date(t.added * 1000).toLocaleString()
             })))
-
-            if (!config.get('AUTOREMOVE_PREVENT_REMOVING')) await client.deleteTorrents(torrentsToRemove.map(t => t.hash))
-
-        } else log(`[autoRemove] Client #${clientIndex}, disk ${disk}, total size ${bytesToGB(totalSize)}GB: no exccess`)
+            if (!config.get('AUTOREMOVE_PREVENT_REMOVING')) return await client.deleteTorrents(torrentsToRemove.map(t => t.hash))
+        } else {
+            log.debug(`Client #${clientIndex}, drive ${drive} - ${bytesToGB(totalSize).toFixed(2)}/${bytesToGB(client.quota).toFixed(2)}GB`)
+        }
     }
+    return
 }
 
-module.exports.start = async function() {
-    const autoRemoveIteration = async () => Promise.all((await clients).map(autoRemove))
-    isProduction ? setInterval(autoRemoveIteration, config.get('AUTOREMOVE_INTERVAL_SECONDS') * 1000) : autoRemoveIteration()
+const autoRemoveIteration = (...args) => iteration(autoRemove, config.get('AUTOREMOVE_INTERVAL_SECONDS') * 1000, ...args)
+
+module.exports.start = async () => {
+    const clients = await Promise.all(config.get('CLIENTS').map(getClient))
+    await Promise.all(clients.filter(client => client !== null).map(autoRemoveIteration))
 }
