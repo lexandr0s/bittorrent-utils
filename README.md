@@ -2,7 +2,7 @@
 
 Convenient and private assistant for BTT farming
 
-### Benefits
+## Benefits
 
 * **Manual transfer**: transfer in-app BTTs between in-app wallets
 * **Autotransfer**: collect BTTs automatically from any amount of wallets and avoid losing your BTTs while downloading with µTorrent/BitTorrent
@@ -11,14 +11,14 @@ Convenient and private assistant for BTT farming
 * **Peers filter**: filter no-BTT clients
 * **Private**: no need to worry about the safety of private keys (local transactions signing, no man in the middle)
 
-### Quick Start
+## Quick Start
 
 * Install Node.js if not installed already. Recommended version - [v14.17.5 LTS](https://nodejs.org/dist/v14.17.5/node-v14.17.5-x64.msi)
 * Run `git clone https://github.com/UkrainianHulk/bittorrent-utils` or [download](https://github.com/UkrainianHulk/bittorrent-utils/archive/refs/heads/main.zip) and unzip script
 * Edit `config/production.js`
 * Run `START.bat`
 
-### Setup
+## Setup
 
 `config/production.js` example:
 
@@ -440,14 +440,14 @@ module.exports = {
 | cache.read_thrash | false |
 </details>
 
-### FAQ
+## FAQ
 
 > **Q: How to send desired amount of in-app BTT to others?**
 >
 > **A:** Run ```MANUAL_TRANSFER.bat``` and follow the instructions
 
 
-### Hints
+## Hints
 
 * Get your public key by navigating\
 http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/public_key
@@ -456,19 +456,17 @@ http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/refresh_balance
 * Default developer's fee is 1%, you can change it on your own by editing config.js
 * Withdrawal gateway [TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5](https://tronscan.org/#/address/TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5)
 
-### Questions?
+## Questions?
 
 * [Telegram](https://t.me/bittorrent_utils)
 
-### Donations
+## Donations
 
 * BTT/TRX/USDT (TRX20) TTijwYsndktUJbCHuW5oNPBWoWrJ5RV1iW
 * BTT (in-app) BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=
 
-### Warranty
+#### Warranty
 
 **THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.**
 
-### License
-
-* [MIT](https://github.com/UkrainianHulk/bittorrent-utils/blob/main/LICENSE)
+#### License - [MIT](https://github.com/UkrainianHulk/bittorrent-utils/blob/main/LICENSE) 
