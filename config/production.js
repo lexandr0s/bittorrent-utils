@@ -58,7 +58,7 @@ module.exports = {
             max_active_torrent: 15,
             max_active_downloads: 1
         }
-    },{
+    }, {
         GUI_URL: 'https://yourdomain.com/gui/',
         USERNAME: 'yourusername',
         PASSWORD: 'yourpassword'
