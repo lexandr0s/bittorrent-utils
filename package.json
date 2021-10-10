@@ -1,13 +1,14 @@
 {
   "name": "bittorrent-utils",
-  "version": "1.1.4",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "cross-env NODE_ENV=production node index.js",
     "dev-manual-transfer": "nodemon ./src/manualTransfer.js",
-    "manual-transfer": "cross-env NODE_ENV=production node ./src/manualTransfer.js"
+    "start": "npm install && node -e console.clear() && cross-env NODE_ENV=production node index.js",
+    "start-manual-transfer": "npm install && node -e console.clear() && cross-env NODE_ENV=production node ./src/manualTransfer.js",
+    "start-multiclient": "npm install && node -e console.clear() && cross-env NODE_ENV=production node ./src/multiclient.js"
   },
   "author": "Yaroslav Sorochan <yaroslav.sorochan.i@gmail.com>",
   "license": "MIT",
@@ -17,11 +18,16 @@
   "dependencies": {
     "@grpc/grpc-js": "^1.3.7",
     "@grpc/proto-loader": "^0.6.4",
+    "b58": "^4.0.3",
     "colors": "^1.4.0",
     "config": "^3.3.6",
     "cross-env": "^7.0.3",
+    "keccak": "^3.0.2",
+    "loglevel": "^1.7.1",
     "node-fetch": "^2.6.1",
+    "parent-module": "^2.0.0",
     "protobufjs": "^6.11.2",
-    "secp256k1": "^4.0.2"
+    "secp256k1": "^4.0.2",
+    "semver": "^7.3.5"
   }
 }
