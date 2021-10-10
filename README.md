@@ -442,7 +442,7 @@ module.exports = {
 
 ## FAQ
 
-> **Q: How to send desired amount of in-app BTT to others?**
+> **Q: How to send desired amount of in-app BTTs to others?**
 >
 > **A:** Run ```MANUAL_TRANSFER.bat``` and follow the instructions
 
