@@ -465,8 +465,5 @@ http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/refresh_balance
 * BTT/TRX/USDT (TRX20) TTijwYsndktUJbCHuW5oNPBWoWrJ5RV1iW
 * BTT (in-app) BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=
 
-#### Warranty
-
-**THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.**
-
-#### [MIT License](https://github.com/UkrainianHulk/bittorrent-utils/blob/main/LICENSE) 
+## [License](https://github.com/UkrainianHulk/bittorrent-utils/blob/main/LICENSE)
+Copyright (c) 2021 Yaroslav Sorochan
