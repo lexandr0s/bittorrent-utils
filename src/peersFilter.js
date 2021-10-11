@@ -34,7 +34,7 @@ const filterPeers = async (client, clientIndex) => {
     }
     const peersToBan = peerList.reduce((acc, peer) => {
         if (peer.client.includes('μTorrent') && semver.satisfies(parseVersion(peer.client), config.get('PEERS_FILTER_UTORRENT_VERSION'))) return acc
-        else if (peer.client.includes('μTorrent') && semver.satisfies(parseVersion(peer.client), config.get('PEERS_FILTER_UTORRENT_VERSION'))) return acc // different char code
+        else if (peer.client.includes('µTorrent') && semver.satisfies(parseVersion(peer.client), config.get('PEERS_FILTER_UTORRENT_VERSION'))) return acc // different char code
         else if (peer.client.includes('BitTorrent') && semver.satisfies(parseVersion(peer.client), config.get('PEERS_FILTER_BITTORRENT_VERSION'))) return acc
         else if (peer.client.includes('libtorrent') && semver.satisfies(parseVersion(peer.client), config.get('PEERS_FILTER_LIBTORRENT_VERSION'))) return acc
         else return [...acc, peer]
