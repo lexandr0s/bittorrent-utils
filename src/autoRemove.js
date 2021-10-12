@@ -13,7 +13,7 @@ const getClient = async (credentials, clientIndex) => {
             username: credentials.USERNAME,
             password: credentials.PASSWORD
         }).login()
-        log.info(`Cleint #${clientIndex} logged in as ${client.USERNAME}`)
+        log.info(`Cleint #${clientIndex} logged in as ${credentials.USERNAME}`)
         client.quota = GBtoBytes(credentials.SPACE_QUOTA_PER_DRIVE_GB ? credentials.SPACE_QUOTA_PER_DRIVE_GB : config.get('AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB'))
         return client
     } catch (error) { 
