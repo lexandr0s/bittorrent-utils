@@ -1,6 +1,7 @@
 # BitTorrent Utilities
 
-Convenient and private assistant for BTT farming. Community: [Telegram](https://t.me/bittorrent_utils).
+Convenient and private assistant for BTT farming </br>
+Community - [Telegram](https://t.me/bittorrent_utils)
 
 ## Table of contents
 
@@ -13,7 +14,7 @@ Convenient and private assistant for BTT farming. Community: [Telegram](https://
   - [Setup](#setup)
     - [BTT autotransfer](#btt-autotransfer)
     - [Clients](#clients)
-    - [no-BTT peers filter](#no-btt-peers-filter)
+    - [No-BTT peers filter](#no-btt-peers-filter)
     - [Autoremove torrents](#autoremove-torrents)
     - [BitTorrent & μTorrent autoconfig](#bittorrent--μtorrent-autoconfig)
     - [Other](#other)
@@ -30,7 +31,7 @@ Convenient and private assistant for BTT farming. Community: [Telegram](https://
 * **BTT autotransfer**: collect BTTs automatically from any amount of wallets and avoid losing them while downloading with µTorrent/BitTorrent
 * **Autoremove torrents**: space-dependent autoremoving of the worst torrents
 * **BitTorrent & μTorrent autoconfig**: configure all your BitTorrent or μTorrent clients from one place
-* **no-BTT peers filter**: exclude peers that use no-BTT clients
+* **No-BTT peers filter**: exclude peers that use no-BTT clients
 * **Cross-platform**: windows and linux compatible
 * **Private**: no need to worry about the safety of private keys (local transactions signing, no man in the middle)
 
@@ -123,7 +124,7 @@ CLIENTS: [{
 }],
 ```
 
-### no-BTT peers filter
+### No-BTT peers filter
 
 **PEERS_FILTER_INTERVAL_SECONDS**
 
