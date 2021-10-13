@@ -91,7 +91,7 @@ AUTOTRANSFER_FROM: [
 
 Recipient wallet's SPEED public key, SPEED private key or BTFS private keys. Check [hints](#hints) below to find out how to get SPEED public key. Example:
 ```js
-AUTOTRANSFER_RECIPIENT: "BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=",
+AUTOTRANSFER_TO: "BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=",
 ```
 
 **AUTOTRANSFER_HISTORY_AGE_HOURS**
