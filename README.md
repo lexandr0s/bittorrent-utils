@@ -11,11 +11,11 @@ Convenient and private assistant for BTT farming. Community: [Telegram](https://
     - [Windows](#windows)
     - [Linux](#linux)
   - [Setup](#setup)
-    - [Autotransfer](#autotransfer)
+    - [BTT autotransfer](#btt-autotransfer)
     - [Clients](#clients)
-    - [Peers filter](#peers-filter)
-    - [Autoremove](#autoremove)
-    - [Autoconfig](#autoconfig)
+    - [no-BTT peers filter](#no-btt-peers-filter)
+    - [Autoremove torrents](#autoremove-torrents)
+    - [BitTorrent & μTorrent autoconfig](#bittorrent--μtorrent-autoconfig)
     - [Other](#other)
   - [FAQ](#faq)
   - [Hints](#hints)
@@ -26,11 +26,11 @@ Convenient and private assistant for BTT farming. Community: [Telegram](https://
 
 ## Benefits
 
-* **Manual transfer**: transfer in-app BTTs between in-app wallets
-* **Autotransfer**: collect BTTs automatically from any amount of wallets and avoid losing them while downloading with µTorrent/BitTorrent
-* **Autoremove**: space-dependent autoremoving of the worst torrents
-* **Autoconfig**: configure all your BitTorrent or μTorrent clients from one place
-* **Peers filter**: exclude peers that use no-BTT clients
+* **BTT manual transfer**: transfer in-app BTTs between in-app wallets
+* **BTT autotransfer**: collect BTTs automatically from any amount of wallets and avoid losing them while downloading with µTorrent/BitTorrent
+* **Autoremove torrents**: space-dependent autoremoving of the worst torrents
+* **BitTorrent & μTorrent autoconfig**: configure all your BitTorrent or μTorrent clients from one place
+* **no-BTT peers filter**: exclude peers that use no-BTT clients
 * **Cross-platform**: windows and linux compatible
 * **Private**: no need to worry about the safety of private keys (local transactions signing, no man in the middle)
 
@@ -64,7 +64,7 @@ Convenient and private assistant for BTT farming. Community: [Telegram](https://
 
 ## Setup
 
-### Autotransfer
+### BTT autotransfer
 
 Autotransfer is a utility to transfer BTTs from one in-app wallet to another automatically.
 It is useful when you want to collect tokens from your wallets in one place and prevent spending them while downloading with BitTorrent or μTorrent clients. 
@@ -123,7 +123,7 @@ CLIENTS: [{
 }],
 ```
 
-### Peers filter
+### no-BTT peers filter
 
 **PEERS_FILTER_INTERVAL_SECONDS**
 
@@ -160,7 +160,7 @@ PEERS_FILTER_LIBTORRENT_VERSION: '>=1.2.2',
 PEERS_FILTER_BANLIST_MAX_LENGTH: 1000,
 ```
 
-### Autoremove
+### Autoremove torrents
 
 **AUTOREMOVE_INTERVAL_SECONDS**
 
@@ -183,7 +183,7 @@ AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB: 200,
 AUTOREMOVE_PREVENT_REMOVING: true,
 ```
 
-### Autoconfig
+### BitTorrent & μTorrent autoconfig
 
 **AUTOCONFIG_ENABLE**
 
