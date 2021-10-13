@@ -45,12 +45,23 @@ Our community: [Telegram](https://t.me/bittorrent_utils)
 
 ### Autotransfer
 
+Autotransfer is a utility to transfer BTTs from one in-app wallet to another automatically.
+It is useful when you want to collect tokens from your wallets in one place and prevent spending them while downloading with BitTorrent or μTorrent clients. 
+This utility checks the balance of the specified wallets with selected interval, if BTT is available, transfers them to another specified wallet.
+
 #### AUTOTRANSFER_INTERVAL_SECONDS
-Autotransfer interval in seconds. Set to 0 to disable. Example:
+Interval in seconds. Set to 0 to turn off this utility. Example:
 ```
 AUTOTRANSFER_INTERVAL_SECONDS: 3
 ```
 #### AUTOTRANSFER_FROM
+A list of donor wallet's SPEED or BTFS private keys. Example:
+```
+AUTOTRANSFER_FROM: [
+    "865b2084abd1909b1a1edc836da8edc64f74239a34d04bc2b6ef94c2016a8c45",
+    "ad861e2b1876c7071fec870e02e6b1527d443fd45d05aceeb64e4236b7a1b7eb"
+]
+```
 #### AUTOTRANSFER_TO
 #### AUTOTRANSFER_HISTORY_AGE_HOURS
 
