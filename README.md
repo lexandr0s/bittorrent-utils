@@ -45,7 +45,7 @@ Our community: [Telegram](https://t.me/bittorrent_utils)
       - [LOG_LEVEL](#log_level)
   - [FAQ](#faq)
   - [Hints](#hints)
-  - [Questions?](#questions)
+  - [Support](#support)
   - [Donations](#donations)
   - [License](#license)
 
@@ -505,7 +505,7 @@ http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/public_key
 http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/refresh_balance
 * Withdrawal gateway [TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5](https://tronscan.org/#/address/TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5)
 
-## Questions?
+## Support
 
 * You can ask for help or discuss the application in our community group: [Telegram](https://t.me/bittorrent_utils)
 * If you found a bug, please open a [new issue](https://github.com/UkrainianHulk/bittorrent-utils/issues/new)
