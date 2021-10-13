@@ -13,6 +13,46 @@ Our community: [Telegram](https://t.me/bittorrent_utils)
 * **Cross-platform**: windows and linux compatible
 * **Private**: no need to worry about the safety of private keys (local transactions signing, no man in the middle)
 
+## Table of contents
+
+- [BitTorrent Utilities](#bittorrent-utilities)
+  - [Benefits](#benefits)
+  - [Table of contents](#table-of-contents)
+  - [Quick Start](#quick-start)
+    - [Windows](#windows)
+    - [Linux](#linux)
+  - [Setup](#setup)
+    - [Autotransfer](#autotransfer)
+      - [AUTOTRANSFER_INTERVAL_SECONDS](#autotransfer_interval_seconds)
+      - [AUTOTRANSFER_FROM](#autotransfer_from)
+      - [AUTOTRANSFER_TO](#autotransfer_to)
+      - [AUTOTRANSFER_HISTORY_AGE_HOURS](#autotransfer_history_age_hours)
+    - [Peers filter](#peers-filter)
+      - [PEERS_FILTER_INTERVAL_SECONDS](#peers_filter_interval_seconds)
+      - [PEERS_FILTER_BITTORRENT_VERSION](#peers_filter_bittorrent_version)
+      - [PEERS_FILTER_UTORRENT_VERSION](#peers_filter_utorrent_version)
+      - [PEERS_FILTER_LIBTORRENT_VERSION](#peers_filter_libtorrent_version)
+      - [PEERS_FILTER_BANLIST_MAX_LENGTH](#peers_filter_banlist_max_length)
+    - [Autoconfig](#autoconfig)
+      - [AUTOCONFIG_ENABLE](#autoconfig_enable)
+      - [AUTOCONFIG_SETTINGS](#autoconfig_settings)
+    - [Autoremove](#autoremove)
+      - [AUTOCONFIG_ENABLE](#autoconfig_enable-1)
+      - [AUTOCONFIG_SETTINGS](#autoconfig_settings-1)
+      - [AUTOREMOVE_INTERVAL_SECONDS](#autoremove_interval_seconds)
+      - [AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB](#autoremove_space_quota_per_drive_gb)
+      - [AUTOREMOVE_PREVENT_REMOVING](#autoremove_prevent_removing)
+    - [Clients](#clients)
+      - [CLIENTS](#clients-1)
+    - [Other](#other)
+      - [DEV_FEE_PERCENT](#dev_fee_percent)
+      - [LOG_LEVEL](#log_level)
+  - [FAQ](#faq)
+  - [Hints](#hints)
+  - [Questions?](#questions)
+  - [Donations](#donations)
+  - [License](#license)
+
 ## Quick Start
 
 ### Windows
@@ -47,7 +87,7 @@ Our community: [Telegram](https://t.me/bittorrent_utils)
 
 Autotransfer is a utility to transfer BTTs from one in-app wallet to another automatically.
 It is useful when you want to collect tokens from your wallets in one place and prevent spending them while downloading with BitTorrent or μTorrent clients. 
-This utility checks the balance of the specified wallets with selected interval, if BTT is available, transfers them to another specified wallet.
+This utility checks the balance of the specified donor wallets with selected interval, if BTT is available, transfers them to specified recipient wallet.
 
 #### AUTOTRANSFER_INTERVAL_SECONDS
 
@@ -68,7 +108,7 @@ AUTOTRANSFER_FROM: [
 
 #### AUTOTRANSFER_TO
 
-Recipient wallet's SPEED public key, SPEED private key or BTFS private keys. Check hints below to find out how to get SPEED public key. Example:
+Recipient wallet's SPEED public key, SPEED private key or BTFS private keys. Check [hints](#hints) below to find out how to get SPEED public key. Example:
 ```js
 AUTOTRANSFER_RECIPIENT: "BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=",
 ```
