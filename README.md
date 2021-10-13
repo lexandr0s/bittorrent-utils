@@ -24,25 +24,10 @@ Our community: [Telegram](https://t.me/bittorrent_utils)
   - [Setup](#setup)
     - [Autotransfer](#autotransfer)
     - [Peers filter](#peers-filter)
-      - [PEERS_FILTER_INTERVAL_SECONDS](#peers_filter_interval_seconds)
-      - [PEERS_FILTER_BITTORRENT_VERSION](#peers_filter_bittorrent_version)
-      - [PEERS_FILTER_UTORRENT_VERSION](#peers_filter_utorrent_version)
-      - [PEERS_FILTER_LIBTORRENT_VERSION](#peers_filter_libtorrent_version)
-      - [PEERS_FILTER_BANLIST_MAX_LENGTH](#peers_filter_banlist_max_length)
     - [Autoconfig](#autoconfig)
-      - [AUTOCONFIG_ENABLE](#autoconfig_enable)
-      - [AUTOCONFIG_SETTINGS](#autoconfig_settings)
     - [Autoremove](#autoremove)
-      - [AUTOCONFIG_ENABLE](#autoconfig_enable-1)
-      - [AUTOCONFIG_SETTINGS](#autoconfig_settings-1)
-      - [AUTOREMOVE_INTERVAL_SECONDS](#autoremove_interval_seconds)
-      - [AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB](#autoremove_space_quota_per_drive_gb)
-      - [AUTOREMOVE_PREVENT_REMOVING](#autoremove_prevent_removing)
     - [Clients](#clients)
-      - [CLIENTS](#clients-1)
     - [Other](#other)
-      - [DEV_FEE_PERCENT](#dev_fee_percent)
-      - [LOG_LEVEL](#log_level)
   - [FAQ](#faq)
   - [Hints](#hints)
   - [Support](#support)
@@ -118,33 +103,33 @@ AUTOTRANSFER_HISTORY_AGE_HOURS: 24,
 
 ### Peers filter
 
-#### PEERS_FILTER_INTERVAL_SECONDS
-#### PEERS_FILTER_BITTORRENT_VERSION
-#### PEERS_FILTER_UTORRENT_VERSION
-#### PEERS_FILTER_LIBTORRENT_VERSION
-#### PEERS_FILTER_BANLIST_MAX_LENGTH
+**PEERS_FILTER_INTERVAL_SECONDS**
+**PEERS_FILTER_BITTORRENT_VERSION**
+**PEERS_FILTER_UTORRENT_VERSION**
+**PEERS_FILTER_LIBTORRENT_VERSION**
+**PEERS_FILTER_BANLIST_MAX_LENGTH**
 
 ### Autoconfig
 
-#### AUTOCONFIG_ENABLE
-#### AUTOCONFIG_SETTINGS
+**AUTOCONFIG_ENABLE**
+**AUTOCONFIG_SETTINGS**
 
 ### Autoremove
 
-#### AUTOCONFIG_ENABLE
-#### AUTOCONFIG_SETTINGS
-#### AUTOREMOVE_INTERVAL_SECONDS
-#### AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB
-#### AUTOREMOVE_PREVENT_REMOVING
+**AUTOCONFIG_ENABLE**
+**AUTOCONFIG_SETTINGS**
+**AUTOREMOVE_INTERVAL_SECONDS**
+**AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB**
+**AUTOREMOVE_PREVENT_REMOVING**
 
 ### Clients
 
-#### CLIENTS
+**CLIENTS**
 
 ### Other
 
-#### DEV_FEE_PERCENT
-#### LOG_LEVEL
+**DEV_FEE_PERCENT**
+**LOG_LEVEL**
 
 <details>
     <summary>All possible options for client's autoconfig settings</summary>
