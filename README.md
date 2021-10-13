@@ -486,9 +486,9 @@ AUTOTRANSFER_HISTORY_AGE_HOURS: 24,
 
 * Get your public key by navigating\
 http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/public_key
-* BitTorrent and μTorrent clients have memory leak issue on x64 systems. Use x32 systems to avoid this.
 * To check balance changes immediately in BitTorrent Speed, refresh accounts balance by navigating\
 http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/refresh_balance
+* BitTorrent and μTorrent clients have memory leak issue on x64 systems. Use x32 systems to avoid this.
 * Withdrawal gateway [TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5](https://tronscan.org/#/address/TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5)
 
 ## Support
