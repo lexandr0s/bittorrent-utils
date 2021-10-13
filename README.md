@@ -23,10 +23,6 @@ Our community: [Telegram](https://t.me/bittorrent_utils)
     - [Linux](#linux)
   - [Setup](#setup)
     - [Autotransfer](#autotransfer)
-      - [AUTOTRANSFER_INTERVAL_SECONDS](#autotransfer_interval_seconds)
-      - [AUTOTRANSFER_FROM](#autotransfer_from)
-      - [AUTOTRANSFER_TO](#autotransfer_to)
-      - [AUTOTRANSFER_HISTORY_AGE_HOURS](#autotransfer_history_age_hours)
     - [Peers filter](#peers-filter)
       - [PEERS_FILTER_INTERVAL_SECONDS](#peers_filter_interval_seconds)
       - [PEERS_FILTER_BITTORRENT_VERSION](#peers_filter_bittorrent_version)
@@ -89,14 +85,14 @@ Autotransfer is a utility to transfer BTTs from one in-app wallet to another aut
 It is useful when you want to collect tokens from your wallets in one place and prevent spending them while downloading with BitTorrent or μTorrent clients. 
 This utility checks the balance of the specified donor wallets with selected interval, if BTT is available, transfers them to specified recipient wallet.
 
-#### AUTOTRANSFER_INTERVAL_SECONDS
+**AUTOTRANSFER_INTERVAL_SECONDS**
 
 Interval in seconds. Set to 0 to turn off this utility. Example:
 ```js
 AUTOTRANSFER_INTERVAL_SECONDS: 3,
 ```
 
-#### AUTOTRANSFER_FROM
+**AUTOTRANSFER_FROM**
 
 A list of donor wallet's SPEED or BTFS private keys. Example:
 ```js
@@ -106,14 +102,14 @@ AUTOTRANSFER_FROM: [
 ],
 ```
 
-#### AUTOTRANSFER_TO
+**AUTOTRANSFER_TO**
 
 Recipient wallet's SPEED public key, SPEED private key or BTFS private keys. Check [hints](#hints) below to find out how to get SPEED public key. Example:
 ```js
 AUTOTRANSFER_RECIPIENT: "BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=",
 ```
 
-#### AUTOTRANSFER_HISTORY_AGE_HOURS
+**AUTOTRANSFER_HISTORY_AGE_HOURS**
 
 This option enables statistics counting. The application will log the information about amount of transfered tokens in specified period per donor wallet. Data will be saved in memory, so restarting the script will reset statistics. Set to 0 to turn off this utility. Example:
 ```js
