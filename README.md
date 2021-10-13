@@ -25,26 +25,20 @@ Our community: [Telegram](https://t.me/bittorrent_utils)
 ### Linux
 
 * Install Node.js and Git if not installed already: 
-    
     ```
-    apt update
-    apt install nodejs git
+    apt update && apt install nodejs git
     ```
 * Clone this repository:
-    
     ```
     git clone https://github.com/UkrainianHulk/bittorrent-utils
     ```
 * Edit configuration file:
-    
     ```
     nano bittorrent-utils/config/production.js
     ```
-* Run script:
-    
+* Navigate in script directory and run script:
     ```
-    cd bittorrent-utils
-    npm start
+    cd bittorrent-utils && npm start
     ```
 
 ## Setup
