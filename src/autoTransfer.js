@@ -4,8 +4,8 @@ const inAppTransfer = require('./libs/inAppTransfer.js')
 const ledgerRPC = require('./libs/ledgerRPC.js')
 const {isProduction, log, UBTTtoBTT, iteration} = require('./libs/utils.js')
 
-const payers = config.get('AUTOTRANSFER_PAYERS')
-const recipientKey = config.get('AUTOTRANSFER_RECIPIENT')
+const payers = config.get('AUTOTRANSFER_FROM')
+const recipientKey = config.get('AUTOTRANSFER_TO')
 const historyAgeHours = config.get('AUTOTRANSFER_HISTORY_AGE_HOURS')
 
 const Hisotry = class {
