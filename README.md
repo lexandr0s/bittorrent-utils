@@ -52,14 +52,14 @@ This utility checks the balance of the specified wallets with selected interval,
 #### AUTOTRANSFER_INTERVAL_SECONDS
 
 Interval in seconds. Set to 0 to turn off this utility. Example:
-```
+```js
 AUTOTRANSFER_INTERVAL_SECONDS: 3,
 ```
 
 #### AUTOTRANSFER_FROM
 
 A list of donor wallet's SPEED or BTFS private keys. Example:
-```
+```js
 AUTOTRANSFER_FROM: [
     "865b2084abd1909b1a1edc836da8edc64f74239a34d04bc2b6ef94c2016a8c45",
     "ad861e2b1876c7071fec870e02e6b1527d443fd45d05aceeb64e4236b7a1b7eb"
@@ -69,14 +69,14 @@ AUTOTRANSFER_FROM: [
 #### AUTOTRANSFER_TO
 
 Recipient wallet's SPEED public key, SPEED private key or BTFS private keys. Check hints below to find out how to get SPEED public key. Example:
-```
+```js
 AUTOTRANSFER_RECIPIENT: "BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=",
 ```
 
 #### AUTOTRANSFER_HISTORY_AGE_HOURS
 
 This option enables statistics counting. The application will log the information about amount of transfered tokens in specified period per donor wallet. Data will be saved in memory, so restarting the script will reset statistics. Set to 0 to turn off this utility. Example:
-```
+```js
 AUTOTRANSFER_HISTORY_AGE_HOURS: 24,
 ```
 
