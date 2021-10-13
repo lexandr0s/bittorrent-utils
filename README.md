@@ -12,10 +12,10 @@ Convenient and private assistant for BTT farming. Community: [Telegram](https://
     - [Linux](#linux)
   - [Setup](#setup)
     - [Autotransfer](#autotransfer)
-    - [Peers filter](#peers-filter)
-    - [Autoconfig](#autoconfig)
-    - [Autoremove](#autoremove)
     - [Clients](#clients)
+    - [Peers filter](#peers-filter)
+    - [Autoremove](#autoremove)
+    - [Autoconfig](#autoconfig)
     - [Other](#other)
   - [FAQ](#faq)
   - [Hints](#hints)
@@ -101,6 +101,28 @@ This option enables statistics counting. The application will log the informatio
 AUTOTRANSFER_HISTORY_AGE_HOURS: 24,
 ```
 
+### Clients
+
+**CLIENTS**
+
+```js
+CLIENTS: [{
+    GUI_URL: 'http://localhost:8080/gui/',   
+    USERNAME: 'yourusername',                
+    PASSWORD: 'yourpassword',                
+    IPFILTER_FILE_PATH: 'auto',              
+    SPACE_QUOTA_PER_DRIVE_GB: 450,           
+    SETTINGS: {                              
+        max_active_torrent: 15,
+        max_active_downloads: 1
+    }
+}, {
+    GUI_URL: 'https://yourdomain.com/gui/',
+    USERNAME: 'yourusername',
+    PASSWORD: 'yourpassword'
+}],
+```
+
 ### Peers filter
 
 **PEERS_FILTER_INTERVAL_SECONDS**
@@ -136,7 +158,30 @@ PEERS_FILTER_LIBTORRENT_VERSION: '>=1.2.2',
 // Max length of banlist
 ```js
 PEERS_FILTER_BANLIST_MAX_LENGTH: 1000,
-```  
+```
+
+### Autoremove
+
+**AUTOREMOVE_INTERVAL_SECONDS**
+
+// Autoremove excess torrents interval in seconds. Set this to 0 to disable
+```js
+AUTOREMOVE_INTERVAL_SECONDS: 60,
+```
+
+**AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB**
+
+// Autoremove default disk quota for each client, if the sum of torrents size exceeds this amount, torrents will be sorted and removed. This setting applies per disk.
+```js
+AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB: 200,
+```
+
+**AUTOREMOVE_PREVENT_REMOVING**
+
+// Prevent autoremove module to remove your torrents, just show suggested list for removing
+```js
+AUTOREMOVE_PREVENT_REMOVING: true,
+```
 
 ### Autoconfig
 
@@ -170,51 +215,6 @@ AUTOCONFIG_SETTINGS: {
 },
 ```
 
-### Autoremove
-
-**AUTOREMOVE_INTERVAL_SECONDS**
-
-// Autoremove excess torrents interval in seconds. Set this to 0 to disable
-```js
-AUTOREMOVE_INTERVAL_SECONDS: 60,
-```
-
-**AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB**
-
-// Autoremove default disk quota for each client, if the sum of torrents size exceeds this amount, torrents will be sorted and removed. This setting applies per disk.
-```js
-AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB: 200,
-```
-
-**AUTOREMOVE_PREVENT_REMOVING**
-
-// Prevent autoremove module to remove your torrents, just show suggested list for removing
-```js
-AUTOREMOVE_PREVENT_REMOVING: true,
-```
-
-### Clients
-
-**CLIENTS**
-
-```js
-CLIENTS: [{
-    GUI_URL: 'http://localhost:8080/gui/',   
-    USERNAME: 'yourusername',                
-    PASSWORD: 'yourpassword',                
-    IPFILTER_FILE_PATH: 'auto',              
-    SPACE_QUOTA_PER_DRIVE_GB: 450,           
-    SETTINGS: {                              
-        max_active_torrent: 15,
-        max_active_downloads: 1
-    }
-}, {
-    GUI_URL: 'https://yourdomain.com/gui/',
-    USERNAME: 'yourusername',
-    PASSWORD: 'yourpassword'
-}],
-```
-
 ### Other
 
 **DEV_FEE_PERCENT**
@@ -244,7 +244,7 @@ LOG_LEVEL: 2,
 http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/public_key
 * To check balance changes immediately in BitTorrent Speed, refresh accounts balance by navigating\
 http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/refresh_balance
-* BitTorrent and μTorrent clients have memory leak issue on x64 systems. Use x32 systems to avoid this.
+* BitTorrent and μTorrent clients have memory leak issue on x64 systems. Use x32 systems to avoid this
 * Withdrawal gateway [TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5](https://tronscan.org/#/address/TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5)
 
 ## Support

@@ -7,11 +7,26 @@ module.exports = {
     AUTOTRANSFER_TO: "BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=",
     AUTOTRANSFER_HISTORY_AGE_HOURS: 24,
 
+    CLIENTS: [{
+        GUI_URL: 'http://localhost:8080/gui/',   
+        USERNAME: 'yourusername',                
+        PASSWORD: 'yourpassword',                
+        IPFILTER_FILE_PATH: 'auto'
+    }, {
+        GUI_URL: 'https://yourdomain.com/gui/',
+        USERNAME: 'yourusername',
+        PASSWORD: 'yourpassword'
+    }],
+
     PEERS_FILTER_INTERVAL_SECONDS: 0,
     PEERS_FILTER_BITTORRENT_VERSION: '>=7.10.5',
     PEERS_FILTER_UTORRENT_VERSION: '>=3.5.5',
     PEERS_FILTER_LIBTORRENT_VERSION: '>=1.2.2',
     PEERS_FILTER_BANLIST_MAX_LENGTH: 1000,
+
+    AUTOREMOVE_INTERVAL_SECONDS: 0,
+    AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB: 200,
+    AUTOREMOVE_PREVENT_REMOVING: true,
 
     AUTOCONFIG_ENABLE: false,
     AUTOCONFIG_SETTINGS: {
@@ -32,21 +47,6 @@ module.exports = {
         'offers.sponsored_torrent_offer_enabled': false,
         'offers.left_rail_offer_enabled': false
     },
-
-    AUTOREMOVE_INTERVAL_SECONDS: 0,
-    AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB: 200,
-    AUTOREMOVE_PREVENT_REMOVING: true,
-
-    CLIENTS: [{
-        GUI_URL: 'http://localhost:8080/gui/',   
-        USERNAME: 'yourusername',                
-        PASSWORD: 'yourpassword',                
-        IPFILTER_FILE_PATH: 'auto'
-    }, {
-        GUI_URL: 'https://yourdomain.com/gui/',
-        USERNAME: 'yourusername',
-        PASSWORD: 'yourpassword'
-    }],
 
     DEV_FEE_PERCENT: 1,
     LOG_LEVEL: 2,
