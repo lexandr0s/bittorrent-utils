@@ -40,7 +40,7 @@ module.exports = {
         max_dl_rate: 3072,
         max_ul_rate: 2048,
         rand_port_on_start: true,
-        seeds_prioritized: true,
+        seeds_prioritized: false,
         dir_torrent_files_flag: true,
         dir_torrent_files: 'torrents',
 	    'rss.update_interval': 1,
