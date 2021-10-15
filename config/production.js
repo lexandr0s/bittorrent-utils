@@ -43,6 +43,7 @@ module.exports = {
         seeds_prioritized: false,
         dir_torrent_files_flag: true,
         dir_torrent_files: 'torrents',
+        start_minimized: false,
 	    'rss.update_interval': 1,
         'offers.sponsored_torrent_offer_enabled': false,
         'offers.left_rail_offer_enabled': false
