@@ -27,11 +27,11 @@ const getListsPerDrive = (list) => list.reduce((acc, torrent) => {
     if (!acc[torrentRoot]) {
         acc[torrentRoot] = {
             torrents: [torrent],
-            totalSize: torrent.downloaded
+            totalSize: torrent.size
         }
     } else {
         acc[torrentRoot].torrents.push(torrent)
-        acc[torrentRoot].totalSize += torrent.downloaded
+        acc[torrentRoot].totalSize += torrent.size
     }
     return acc
 }, {})
@@ -81,7 +81,8 @@ const autoRemove = async (client, clientIndex) => {
             console.table(torrentsToRemove.map(t => ({name: t.name,
                 drive: drive,
                 size: bytesToGB(t.size).toFixed(2) + ' GB',
-                ratio: t.ratio / 1000, seedsRatio: t.seedsRatio,
+                ratio: t.ratio / 1000,
+                seedsRatio: t.seedsRatio,
                 coefficient: t.coefficient,
                 added: new Date(t.added * 1000).toLocaleString()
             })))
