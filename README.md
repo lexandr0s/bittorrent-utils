@@ -112,7 +112,7 @@ CLIENTS: [{
     USERNAME: 'yourusername',                
     PASSWORD: 'yourpassword',                
     IPFILTER_FILE_PATH: 'auto',              
-    SPACE_QUOTA_PER_DRIVE_GB: 450,           
+    SIZE_QUOTA_PER_DRIVE_GB: 450,           
     SETTINGS: {                              
         max_active_torrent: 15,
         max_active_downloads: 1
@@ -170,11 +170,11 @@ PEERS_FILTER_BANLIST_MAX_LENGTH: 1000,
 AUTOREMOVE_INTERVAL_SECONDS: 60,
 ```
 
-**AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB**
+**AUTOREMOVE_SIZE_QUOTA_PER_DRIVE_GB**
 
 // Autoremove default disk quota for each client, if the sum of torrents size exceeds this amount, torrents will be sorted and removed. This setting applies per disk.
 ```js
-AUTOREMOVE_SPACE_QUOTA_PER_DRIVE_GB: 200,
+AUTOREMOVE_SIZE_QUOTA_PER_DRIVE_GB: 200,
 ```
 
 **AUTOREMOVE_PREVENT_REMOVING**
@@ -245,7 +245,6 @@ LOG_LEVEL: 2,
 http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/public_key
 * To check balance changes immediately in BitTorrent Speed, refresh accounts balance by navigating\
 http://127.0.0.1:[BITTORRENT_SPEED_PORT]/api/refresh_balance
-* BitTorrent and μTorrent clients have memory leak issue on x64 systems. Use x32 systems to avoid this
 * Withdrawal gateway [TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5](https://tronscan.org/#/address/TTZu7wpHa9tnQjFUDrsjgPfXE7fck7yYs5)
 
 ## Support
