@@ -44,15 +44,16 @@ const autoTransfer = async (payerPrivateKey, payerIndex) => {
         const recipientBalance = (await ledgerRPC.createAccount({
             key: recipientKey
         })).account.balance
-
-        log.info(`Payer #${payerIndex}: ` + UBTTtoBTT(transferResult.paymentAmount).toLocaleString().green + ' BTT -> ' + UBTTtoBTT(recipientBalance).toLocaleString().brightGreen + ' BTT')
         
-        if (historyAgeHours) {
+        const transferLogString = `Payer #${payerIndex}: ` + UBTTtoBTT(transferResult.paymentAmount).toLocaleString().green + ' -> ' + UBTTtoBTT(recipientBalance).toLocaleString().brightGreen + ' BTT'
+        
+        if (!historyAgeHours) log.info(transferLogString)
+        else if (historyAgeHours) {
             const globalProfit = UBTTtoBTT(history.getGlobalProfitability())
             const payerProfit = UBTTtoBTT(history.getPayerProfitability(payerIndex))
             const payerProfitPercent = Math.round(payerProfit/globalProfit*10000) / 100
-            log.info(`Payer #${payerIndex} last ${historyAgeHours} hour(s) profit: ${payerProfit.toLocaleString().cyan} BTT (${(payerProfitPercent + '%').cyan} of global)`)
-            log.info(`Global last ${historyAgeHours} hour(s) profit: ${globalProfit.toLocaleString().brightCyan} BTT`)
+            
+            log.info(transferLogString + `, last ${historyAgeHours} hour(s) profit: ${payerProfit.toLocaleString().cyan} - ${(payerProfitPercent + '%').cyan} of global (${globalProfit.toLocaleString().brightCyan} BTT)`)
         }
 
         return

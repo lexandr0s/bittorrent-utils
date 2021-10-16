@@ -53,11 +53,11 @@ const autoRemove = async (client, clientIndex) => {
     const list = await client.getList()
     const listsPerDrive = getListsPerDrive(list)
     for (let drive in listsPerDrive) {
-        const driveList = listsPerDrive[drive]
-        const totalSize = driveList.totalSize
+        const listOnDrive = listsPerDrive[drive]
+        const totalSize = listOnDrive.totalSize
         if (totalSize > client.quota) {
-            const sortedList = sortTorrents(driveList.torrents)
             const exccess = totalSize - client.quota
+            const sortedList = sortTorrents(listOnDrive.torrents)
             const torrentsToRemove = []
 
             // console.table(sortedList.map(item => ({
@@ -71,6 +71,10 @@ const autoRemove = async (client, clientIndex) => {
             // })))
             
             do {
+                if (sortedList.length === 0) {
+                    log.warn('Nothing to delete. But there is not enough space for the desired downloads')
+                    break
+                }
                 const torrent = sortedList.pop()
                 if (torrent.coefficient === 0) continue
                 torrentsToRemove.push(torrent)
