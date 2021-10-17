@@ -46,7 +46,7 @@ module.exports = {
         dir_torrent_files: 'torrents',
         dir_autoload_flag: true,
         dir_autoload: 'torrents',
-        dir_autoload_delete: false,
+        dir_autoload_delete: true,
         'cache.read': false,
         'cache.write': false,
 	    'rss.update_interval': 1,
