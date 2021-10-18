@@ -200,7 +200,7 @@ AUTOREMOVE_PREVENT_REMOVING: true,
 
 > **Q: How to send desired amount of in-app BTT to others?**
 >
-> **A:** Run ```MANUAL_TRANSFER.bat``` and follow the instructions
+> **A:** Run `bittorrent-utils/MANUAL_TRANSFER.bat` and follow the instructions
 
 
 ## Hints
