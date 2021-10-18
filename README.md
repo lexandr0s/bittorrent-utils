@@ -40,9 +40,11 @@ Community - [Telegram](https://t.me/bittorrent_utils)
 
 ### Screenshots
 
-![Alt text](screenshots/0.png?raw=true "0")
+![screenshot_0](screenshots/0.png?raw=true "0")
 
-![Alt text](screenshots/1.png?raw=true "1")
+![screenshot_1](screenshots/1.png?raw=true "1")
+
+![screenshot_2](screenshots/2.png?raw=true "2")
 
 ## Quick Start
 
