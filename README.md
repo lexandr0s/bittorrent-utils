@@ -79,8 +79,9 @@ Community - [Telegram](https://t.me/bittorrent_utils)
 Autotransfer is a utility to transfer BTTs from one in-app wallet to another automatically.
 It is useful when you want to collect tokens from your wallets in one place and prevent spending them while downloading with BitTorrent or μTorrent clients. 
 This utility checks the balance of the specified donor wallets with selected interval, if BTT is available, transfers them to specified recipient wallet.
-Autotransfer also supports statistic counting. <br/>
-Example of configuration options that are responsible for autotransfer and statistic counting:
+Autotransfer also supports statistic counting.
+
+Example responsible configuration options:
 
 ```js
 AUTOTRANSFER_INTERVAL_SECONDS: 1,
@@ -110,7 +111,9 @@ This option enables statistics counting. The application will log the informatio
 
 ### Clients
 
-Clients setting is a list of BitTorrent / μTorrent credentials that are used by other utilities like [No-BTT peers filter](#no-btt-peers-filter), [Torrents autoremoving](#torrents-autoremoving), [BitTorrent & μTorrent autoconfig](#bittorrent--μtorrent-autoconfig) to connect to BitTorrent / μTorrent clients. This setting can also accept specific options for each client - see other utilities explanation. Utilities listed above will not work without clients specified.
+Clients setting is a list of BitTorrent / μTorrent credentials that are used by other utilities like [No-BTT peers filter](#no-btt-peers-filter), [Torrents autoremoving](#torrents-autoremoving), [BitTorrent & μTorrent autoconfig](#bittorrent--μtorrent-autoconfig) to connect to BitTorrent / μTorrent clients. This setting can also accept specific options for each client - see other utilities explanation. Utilities listed above will not work without clients specified. HTTP and HTTPS protoclos supported.
+
+Example of responsible configuration option:
 
 **CLIENTS**
 
@@ -128,111 +131,71 @@ CLIENTS: [{
 
 ### No-BTT peers filter
 
+```js
+PEERS_FILTER_INTERVAL_SECONDS: 0,
+PEERS_FILTER_BITTORRENT_VERSION: '>=7.10.5',
+PEERS_FILTER_UTORRENT_VERSION: '>=3.5.5',
+PEERS_FILTER_LIBTORRENT_VERSION: '>=1.2.2',
+PEERS_FILTER_BANLIST_MAX_LENGTH: 1000,
+```
+
 **PEERS_FILTER_INTERVAL_SECONDS**
 
 // Peer filter interval in seconds. Set this to 0 to disable
-```js
-PEERS_FILTER_INTERVAL_SECONDS: 3,
-```
 
 **PEERS_FILTER_BITTORRENT_VERSION**
 
 // Permitted BitTorrent versions range (syntax: https://github.com/npm/node-semver#ranges)
-```js
-PEERS_FILTER_BITTORRENT_VERSION: '>=7.10.5',
-```
 
 **PEERS_FILTER_UTORRENT_VERSION**
 
 // Permitted μTorrent versions range (syntax: https://github.com/npm/node-semver#ranges)
-```js
-PEERS_FILTER_UTORRENT_VERSION: '>=3.5.5',
-```
 
 **PEERS_FILTER_LIBTORRENT_VERSION**
 
 // Permitted libtorrent (BitTorrent & μTorrent Web) versions range (syntax: https://github.com/npm/node-semver#ranges)
-```js
-PEERS_FILTER_LIBTORRENT_VERSION: '>=1.2.2',
-```
 
 **PEERS_FILTER_BANLIST_MAX_LENGTH**
 
 // Max length of banlist
-```js
-PEERS_FILTER_BANLIST_MAX_LENGTH: 1000,
-```
 
 ### Torrents autoremoving
+
+```js
+AUTOREMOVE_INTERVAL_SECONDS: 0,
+AUTOREMOVE_SIZE_QUOTA_PER_DRIVE_GB: 180,
+AUTOREMOVE_PREVENT_REMOVING: true,
+```
 
 **AUTOREMOVE_INTERVAL_SECONDS**
 
 // Autoremove excess torrents interval in seconds. Set this to 0 to disable
-```js
-AUTOREMOVE_INTERVAL_SECONDS: 60,
-```
 
 **AUTOREMOVE_SIZE_QUOTA_PER_DRIVE_GB**
 
 // Autoremove default disk quota for each client, if the sum of torrents size exceeds this amount, torrents will be sorted and removed. This setting applies per disk.
-```js
-AUTOREMOVE_SIZE_QUOTA_PER_DRIVE_GB: 200,
-```
 
 **AUTOREMOVE_PREVENT_REMOVING**
 
 // Prevent autoremove module to remove your torrents, just show suggested list for removing
-```js
-AUTOREMOVE_PREVENT_REMOVING: true,
-```
 
 ### BitTorrent & μTorrent autoconfig
 
 **AUTOCONFIG_ENABLE**
 
 // Autoconfig for clients
-```js
-AUTOCONFIG_ENABLE: true,
-```
 
 **AUTOCONFIG_SETTINGS**
-
-```js
-AUTOCONFIG_SETTINGS: {
-    max_active_torrent: 30,
-    max_active_downloads: 3,
-    conns_globally: 10000,
-    conns_per_torrent: 1000,
-    ul_slots_per_torrent: 1,
-    encryption_mode: 1,
-    seed_ratio: 0,
-    max_dl_rate: 3072,
-    max_ul_rate: 2048,
-    rand_port_on_start: true,
-    seeds_prioritized: true,
-    dir_torrent_files_flag: true,
-    dir_torrent_files: 'torrents',
-    'rss.update_interval': 1,
-    'offers.sponsored_torrent_offer_enabled': false,
-    'offers.left_rail_offer_enabled': false
-},
-```
 
 ### Other
 
 **DEV_FEE_PERCENT**
 
 // Developer's fee [0-100, can be a float number like 0.5]
-```js
-DEV_FEE_PERCENT: 1,
-```
 
 **LOG_LEVEL**
 
 // Log levels: TRACE - 0, DEBUG - 1, INFO - 2, WARN - 3, ERROR - 4, SILENT - 5
-```js
-LOG_LEVEL: 2,
-```
 
 ## FAQ
 
