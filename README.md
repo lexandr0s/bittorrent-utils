@@ -17,7 +17,7 @@ Community - [Telegram](https://t.me/bittorrent_utils)
     - [BTT autotransfer](#btt-autotransfer)
     - [Clients](#clients)
     - [No-BTT peers filter](#no-btt-peers-filter)
-    - [Autoremove torrents](#autoremove-torrents)
+    - [Torrents autoremoving](#torrents-autoremoving)
     - [BitTorrent & μTorrent autoconfig](#bittorrent--μtorrent-autoconfig)
     - [Other](#other)
   - [FAQ](#faq)
@@ -32,7 +32,7 @@ Community - [Telegram](https://t.me/bittorrent_utils)
 
 * **BTT manual transfer**: transfer in-app BTTs between in-app wallets
 * **BTT autotransfer**: collect BTTs automatically from any amount of wallets and avoid losing them while downloading with µTorrent/BitTorrent
-* **Autoremove torrents**: space-dependent autoremoving of the worst torrents
+* **Torrents autoremoving**: space-dependent autoremoving of the worst torrents
 * **BitTorrent & μTorrent autoconfig**: configure all your BitTorrent or μTorrent clients from one place
 * **No-BTT peers filter**: exclude peers that use no-BTT clients
 * **Cross-platform**: windows and linux compatible
@@ -79,39 +79,38 @@ Community - [Telegram](https://t.me/bittorrent_utils)
 Autotransfer is a utility to transfer BTTs from one in-app wallet to another automatically.
 It is useful when you want to collect tokens from your wallets in one place and prevent spending them while downloading with BitTorrent or μTorrent clients. 
 This utility checks the balance of the specified donor wallets with selected interval, if BTT is available, transfers them to specified recipient wallet.
+Autotransfer also supports statistic counting. <br/>
+Example of configuration options that are responsible for autotransfer and statistic counting:
 
-**AUTOTRANSFER_INTERVAL_SECONDS**
-
-Interval in seconds. Set to 0 to turn off this utility. Example:
 ```js
-AUTOTRANSFER_INTERVAL_SECONDS: 3,
-```
-
-**AUTOTRANSFER_FROM**
-
-A list of donor wallet's SPEED or BTFS private keys. Example:
-```js
+AUTOTRANSFER_INTERVAL_SECONDS: 1,
 AUTOTRANSFER_FROM: [
     "865b2084abd1909b1a1edc836da8edc64f74239a34d04bc2b6ef94c2016a8c45",
     "ad861e2b1876c7071fec870e02e6b1527d443fd45d05aceeb64e4236b7a1b7eb"
 ],
+AUTOTRANSFER_TO: "BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=",
+AUTOTRANSFER_HISTORY_AGE_HOURS: 24,
 ```
+
+**AUTOTRANSFER_INTERVAL_SECONDS**
+
+Sets the interval for transfer attempts. Set to 0 to turn off this utility.
+
+**AUTOTRANSFER_FROM**
+
+A list of donor wallets' SPEED or BTFS private keys.
 
 **AUTOTRANSFER_TO**
 
-Recipient wallet's SPEED public key, SPEED private key or BTFS private keys. Check [hints](#hints) below to find out how to get SPEED public key. Example:
-```js
-AUTOTRANSFER_TO: "BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=",
-```
+Recipient wallet's SPEED public key, SPEED private key or BTFS private keys. Check [hints](#hints) below to find out how to get SPEED public key.
 
 **AUTOTRANSFER_HISTORY_AGE_HOURS**
 
 This option enables statistics counting. The application will log the information about amount of transfered tokens in specified period per donor wallet. Data will be saved in memory, so restarting the script will reset statistics. Set to 0 to turn off this utility. Example:
-```js
-AUTOTRANSFER_HISTORY_AGE_HOURS: 24,
-```
 
 ### Clients
+
+Clients setting is a list of BitTorrent / μTorrent credentials that are used by other utilities like [No-BTT peers filter](#no-btt-peers-filter), [Torrents autoremoving](#torrents-autoremoving), [BitTorrent & μTorrent autoconfig](#bittorrent--μtorrent-autoconfig) to connect to BitTorrent / μTorrent clients. This setting can also accept specific options for each client - see other utilities explanation. Utilities listed above will not work without clients specified.
 
 **CLIENTS**
 
@@ -120,12 +119,6 @@ CLIENTS: [{
     GUI_URL: 'http://localhost:8080/gui/',   
     USERNAME: 'yourusername',                
     PASSWORD: 'yourpassword',                
-    IPFILTER_FILE_PATH: 'auto',              
-    SIZE_QUOTA_PER_DRIVE_GB: 450,           
-    SETTINGS: {                              
-        max_active_torrent: 15,
-        max_active_downloads: 1
-    }
 }, {
     GUI_URL: 'https://yourdomain.com/gui/',
     USERNAME: 'yourusername',
@@ -170,7 +163,7 @@ PEERS_FILTER_LIBTORRENT_VERSION: '>=1.2.2',
 PEERS_FILTER_BANLIST_MAX_LENGTH: 1000,
 ```
 
-### Autoremove torrents
+### Torrents autoremoving
 
 **AUTOREMOVE_INTERVAL_SECONDS**
 
