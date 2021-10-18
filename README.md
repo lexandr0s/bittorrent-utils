@@ -7,6 +7,7 @@ Community - [Telegram](https://t.me/bittorrent_utils)
 
 - [BitTorrent Utilities](#bittorrent-utilities)
   - [Table of contents](#table-of-contents)
+  - [Quick overview](#quick-overview)
     - [Features](#features)
     - [Screenshots](#screenshots)
   - [Quick Start](#quick-start)
@@ -25,6 +26,7 @@ Community - [Telegram](https://t.me/bittorrent_utils)
   - [Donations](#donations)
   - [License](#license)
 
+## Quick overview
 
 ### Features
 
