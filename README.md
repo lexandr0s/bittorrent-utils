@@ -120,6 +120,12 @@ CLIENTS: [{
 }],
 ```
 
+|Option|Description|
+|-|-|
+|GUI_URL|[string] BitTorrent / μTorrent gui URL |
+|USERNAME|[string] BitTorrent / μTorrent username |
+|PASSWORD|[string] BitTorrent / μTorrent password |
+
 ### No-BTT peers filter
 
 ```js
