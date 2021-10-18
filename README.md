@@ -7,7 +7,8 @@ Community - [Telegram](https://t.me/bittorrent_utils)
 
 - [BitTorrent Utilities](#bittorrent-utilities)
   - [Table of contents](#table-of-contents)
-  - [Benefits](#benefits)
+    - [Features](#features)
+    - [Screenshots](#screenshots)
   - [Quick Start](#quick-start)
     - [Windows](#windows)
     - [Linux](#linux)
@@ -25,7 +26,7 @@ Community - [Telegram](https://t.me/bittorrent_utils)
   - [License](#license)
 
 
-## Benefits
+### Features
 
 * **BTT manual transfer**: transfer in-app BTTs between in-app wallets
 * **BTT autotransfer**: collect BTTs automatically from any amount of wallets and avoid losing them while downloading with µTorrent/BitTorrent
@@ -34,6 +35,12 @@ Community - [Telegram](https://t.me/bittorrent_utils)
 * **No-BTT peers filter**: exclude peers that use no-BTT clients
 * **Cross-platform**: windows and linux compatible
 * **Private**: no need to worry about the safety of private keys (local transactions signing, no man in the middle)
+
+### Screenshots
+
+![Alt text](screenshots/0.png?raw=true "0")
+
+![Alt text](screenshots/1.png?raw=true "1")
 
 ## Quick Start
 
