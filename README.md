@@ -40,7 +40,7 @@ Community - [Telegram](https://t.me/bittorrent_utils)
 
 ### Screenshots
 
-|General|||
+|General|No-BTT peers filter|Torrents autoremoving|
 |-|-|-|
 |![](screenshots/0.png?raw=true)|![](screenshots/1.png?raw=true)|![](screenshots/2.png?raw=true)
 
