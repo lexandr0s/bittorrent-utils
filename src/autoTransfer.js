@@ -2,7 +2,7 @@ const config = require('config')
 const colors = require('colors')
 const inAppTransfer = require('./libs/inAppTransfer.js')
 const ledgerRPC = require('./libs/ledgerRPC.js')
-const {isProduction, log, UBTTtoBTT, iteration} = require('./libs/utils.js')
+const {log, UBTTtoBTT, iteration} = require('./libs/utils.js')
 
 const payers = config.get('AUTOTRANSFER_FROM')
 const recipientKey = config.get('AUTOTRANSFER_TO')

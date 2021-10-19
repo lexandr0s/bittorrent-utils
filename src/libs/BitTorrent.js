@@ -1,6 +1,5 @@
 const URL = require('url').URL
 const fetch = require('node-fetch')
-const {log} = require('./utils.js')
 
 module.exports = class {
     constructor({guiUrl, username, password}) {
@@ -31,7 +30,8 @@ module.exports = class {
         }})
         if (response.status === 200) return response.json()
         else {
-            const errorMessage = `response status ${response.status} - ` + (await response.text()).replace(/(\r\n|\n|\r)/gm, '')
+            const errorMessage = `response status ${response.status} - ` + (await response.text()).replace(/(\r\n|\n|\r)/gm, '') + ', trying to relogin...'
+            await this.login()
             throw new Error(errorMessage)
         }
     }
