@@ -5,7 +5,7 @@ const colors = require('colors')
 const log = require('loglevel')
 const parentModule = require('parent-module')
 
-module.exports.isProduction = process.env.NODE_ENV === 'production'
+module.exports.isProduction = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'containerized'
 module.exports.numberToPercent = (number) => (number > 0 ? number > 100 ? 100 : number : 0) / 100
 module.exports.UBTTtoBTT = (amount) => amount / 1000000
 module.exports.BTTtoUBTT = (amount) => amount * 1000000

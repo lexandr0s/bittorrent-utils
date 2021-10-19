@@ -1,12 +1,9 @@
-const ENV = require('process').env
+const {env: ENV} = require('process')
 
-module.exports = {
+const config = {
     AUTOTRANSFER_INTERVAL_SECONDS: 1,
-    AUTOTRANSFER_FROM: [
-        "865b2084abd1909b1a1edc836da8edc64f74239a34d04bc2b6ef94c2016a8c45",
-        "ad861e2b1876c7071fec870e02e6b1527d443fd45d05aceeb64e4236b7a1b7eb"
-    ],
-    AUTOTRANSFER_TO: ENV.AUTOTRANSFER_TO,
+    AUTOTRANSFER_FROM: 'auto',
+    AUTOTRANSFER_TO: '',
     AUTOTRANSFER_HISTORY_AGE_HOURS: 24,
 
     CLIENTS: [{
@@ -55,4 +52,8 @@ module.exports = {
 
     DEV_FEE_PERCENT: 1,
     LOG_LEVEL: 2,
+
+    ...ENV
 }
+
+module.exports = config

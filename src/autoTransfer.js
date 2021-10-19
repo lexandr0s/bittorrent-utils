@@ -2,6 +2,7 @@ const config = require('config')
 const colors = require('colors')
 const inAppTransfer = require('./libs/inAppTransfer.js')
 const ledgerRPC = require('./libs/ledgerRPC.js')
+const BitTorrentSpeed = require('./libs/BitTorrentSpeed.js')
 const {log, UBTTtoBTT, iteration} = require('./libs/utils.js')
 
 const payers = config.get('AUTOTRANSFER_FROM')
@@ -68,6 +69,12 @@ const autoTransfer = async (payerPrivateKey, payerIndex) => {
 const autoTransferIteration = (...args) => iteration(autoTransfer, config.get('AUTOTRANSFER_INTERVAL_SECONDS') * 1000, ...args)
 
 module.exports.start = async () => {
-    await Promise.all(payers.map(autoTransferIteration))
+    if (payers === 'auto') {
+        const payer = await new BitTorrentSpeed().getPrivateKey()
+        log.info(`Payer private key: ${payer}`)
+        await Promise.all([payer].map(autoTransferIteration))
+    } else {
+        await Promise.all(payers.map(autoTransferIteration))
+    }
 }
 

@@ -1,5 +1,8 @@
 const config = require('config')
+const process = require('process')
 const {log} = require('./src/libs/utils.js')
+
+log.info(`Environment: ${process.env.NODE_ENV}`)
 
 try {
     if (config.get('AUTOTRANSFER_INTERVAL_SECONDS')) require('./src/autoTransfer.js').start()

@@ -15,7 +15,7 @@ module.exports = class {
         const response = await fetch(url.href, {
             headers: {Authorization: 'Basic ' + Buffer.from(`${this.username}:${this.password}`).toString('base64')}
         })
-        if(response.status !== 200) throw new Error(response.statusText)
+        if (response.status !== 200) throw new Error(response.statusText)
         const responseBody = await response.text()
         this.guid = response.headers.get('set-cookie').match(/(?<=GUID=)\S+?(?=\b)/)[0]
         this.token = responseBody.match(/(?<=>)\S+?(?=<)/)[0]
@@ -23,6 +23,7 @@ module.exports = class {
     }
 
     async #authorizedRequest(url) {
+        if (this.token === null || this.guid === null) await this.login()
         url.searchParams.set('token', this.token)
         const response = await fetch(url.href, { headers: {
             Authorization: 'Basic ' + Buffer.from(`${this.username}:${this.password}`).toString('base64'),
