@@ -1,5 +1,5 @@
 const {env: ENV} = require('process')
-const {parseBoolean} = require('./src/libs/utils.js')
+const {parseBoolean} = require('../src/libs/utils.js')
 
 module.exports = {
     AUTOTRANSFER_INTERVAL_SECONDS: ENV.AUTOTRANSFER_INTERVAL_SECONDS ? parseInt(ENV.AUTOTRANSFER_INTERVAL_SECONDS)  : 1,
