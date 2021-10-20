@@ -2,7 +2,7 @@ const config = require('config')
 const process = require('process')
 const log = require('./src/libs/log.js')
 
-log.info(`Environment: ${process.env.NODE_ENV}`)
+log.debug(`Environment: ${process.env.NODE_ENV}`)
 
 Promise.all([
     config.get('AUTOTRANSFER_INTERVAL_SECONDS') ? require('./src/autoTransfer.js').start()  : null,
