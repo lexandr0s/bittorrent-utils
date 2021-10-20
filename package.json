@@ -7,7 +7,7 @@
     "dev": "nodemon index.js",
     "dev-manual-transfer": "nodemon ./src/manualTransfer.js",
     "start": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=production node index.js",
-    "start-containerized": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=containerized AUTOTRANSFER_TO=485b576cee0fd71f2fbbe6e1b4a4896bd2397afd984897dc6049a7192b6c0ac9 node index.js",
+    "start-containerized": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=containerized node index.js",
     "start-manual-transfer": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=production node ./src/manualTransfer.js"
   },
   "author": "Yaroslav Sorochan <yaroslav.sorochan.i@gmail.com>",
