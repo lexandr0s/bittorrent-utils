@@ -5,9 +5,18 @@ const ledgerRPC = require('./libs/ledgerRPC.js')
 const BitTorrentSpeed = require('./libs/BitTorrentSpeed.js')
 const {log, UBTTtoBTT, iteration} = require('./libs/utils.js')
 
-const payers = config.get('AUTOTRANSFER_FROM')
 const recipientKey = config.get('AUTOTRANSFER_TO')
 const historyAgeHours = config.get('AUTOTRANSFER_HISTORY_AGE_HOURS')
+
+const getPayers = async () => {
+    const configValue = config.get('AUTOTRANSFER_FROM')
+
+    if (configValue === 'auto') {
+        const payer = await new BitTorrentSpeed().getPrivateKey()
+        log.info(`Payer private key: ${payer}`)
+        return [payer]
+    } else return configValue
+}
 
 const Hisotry = class {
     constructor(historyAgeHours) {
@@ -69,12 +78,7 @@ const autoTransfer = async (payerPrivateKey, payerIndex) => {
 const autoTransferIteration = (...args) => iteration(autoTransfer, config.get('AUTOTRANSFER_INTERVAL_SECONDS') * 1000, ...args)
 
 module.exports.start = async () => {
-    if (payers === 'auto') {
-        const payer = await new BitTorrentSpeed().getPrivateKey()
-        log.info(`Payer private key: ${payer}`)
-        await Promise.all([payer].map(autoTransferIteration))
-    } else {
-        await Promise.all(payers.map(autoTransferIteration))
-    }
+    const payers = await getPayers()
+    await Promise.all(payers.map(autoTransferIteration))
 }
 

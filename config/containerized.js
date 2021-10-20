@@ -3,7 +3,7 @@ const {env: ENV} = require('process')
 const config = {
     AUTOTRANSFER_INTERVAL_SECONDS: 1,
     AUTOTRANSFER_FROM: 'auto',
-    AUTOTRANSFER_TO: '',
+    AUTOTRANSFER_TO: 'BFHYIrLExXfnWwdPCD827n6n/dhcU6d1TjL0xmbSb0977to4Zx5YOQ9vqkYxqTsQzjgZf2Pfltgt4Kt4cjmaeT0=',
     AUTOTRANSFER_HISTORY_AGE_HOURS: 24,
 
     CLIENTS: [{
@@ -34,7 +34,7 @@ const config = {
         seed_ratio: 0,
         max_dl_rate: 0,
         max_ul_rate: 0,
-        bind_port: 45327,
+        bind_port: 50000,
         rand_port_on_start: false,
         start_minimized: false,
         seeds_prioritized: false,

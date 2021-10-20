@@ -1,5 +1,6 @@
 const config = require('config')
 const BitTorrent = require('./libs/BitTorrent.js')
+const BitTorrentSpeed = require('./libs/BitTorrentSpeed.js')
 const {log} = require('./libs/utils.js')
 
 const getClient = async (credentials, clientIndex) => {
@@ -27,7 +28,15 @@ const setSettings = async (client, clientIndex) => {
     }
 }
 
+const disableTokensSpending = async () => {
+    await new BitTorrentSpeed().disableTokensSpending()
+    log.info(`Tokens spending disabled on local client`)
+}
+
 module.exports.start = async () => {
     const clients = await Promise.all(config.get('CLIENTS').map(getClient))
-    await Promise.all(clients.filter(client => client !== null).map(setSettings))
+    await Promise.all([
+        ...clients.filter(client => client !== null).map(setSettings),
+        disableTokensSpending()
+    ])
 }
