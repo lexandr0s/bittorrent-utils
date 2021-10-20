@@ -1,14 +1,14 @@
 {
   "name": "bittorrent-utils",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "dev-manual-transfer": "cross-env NODE_ENV=development nodemon ./src/manualTransfer.js",
-    "start": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=production node index.js",
-    "start-containerized": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=containerized node index.js",
-    "start-manual-transfer": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=production node ./src/manualTransfer.js"
+    "start": "npm install --only=prod && node -e \"console.clear()\" && cross-env NODE_ENV=production node index.js",
+    "start-containerized": "npm install --only=prod && node -e \"console.clear()\" && cross-env NODE_ENV=containerized node index.js",
+    "start-manual-transfer": "npm install --only=prod && node -e \"console.clear()\" && cross-env NODE_ENV=production node ./src/manualTransfer.js"
   },
   "author": "Yaroslav Sorochan <yaroslav.sorochan.i@gmail.com>",
   "license": "MIT",
