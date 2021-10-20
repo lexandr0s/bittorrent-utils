@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "dev-manual-transfer": "nodemon ./src/manualTransfer.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "dev-manual-transfer": "cross-env NODE_ENV=development nodemon ./src/manualTransfer.js",
     "start": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=production node index.js",
     "start-containerized": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=containerized node index.js",
     "start-manual-transfer": "npm install && node -e \"console.clear()\" && cross-env NODE_ENV=production node ./src/manualTransfer.js"

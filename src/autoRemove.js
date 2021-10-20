@@ -1,7 +1,8 @@
 const path = require('path')
 const config = require('config')
 const BitTorrent = require('./libs/BitTorrent.js')
-const {iteration, log} = require('./libs/utils.js')
+const {iteration} = require('./libs/utils.js')
+const log = require('./libs/log.js')
 
 const bytesToGB = (bytes) => bytes / 1024 / 1024 / 1024
 const GBtoBytes = (gb) => gb * 1024 * 1024 * 1024

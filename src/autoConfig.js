@@ -1,7 +1,7 @@
 const config = require('config')
 const BitTorrent = require('./libs/BitTorrent.js')
 const BitTorrentSpeed = require('./libs/BitTorrentSpeed.js')
-const {log} = require('./libs/utils.js')
+const log = require('./libs/log.js')
 
 const getClient = async (credentials, clientIndex) => {
     try {

@@ -3,7 +3,7 @@ const {env: ENV} = require('process')
 const path = require('path')
 const URL = require('url').URL
 const fetch = require('node-fetch')
-const {log} = require('./utils.js')
+const log = require('./log.js')
 
 module.exports = class {
     constructor() {

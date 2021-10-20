@@ -1,6 +1,6 @@
 const config = require('config')
 const process = require('process')
-const {log} = require('./src/libs/utils.js')
+const log = require('./src/libs/log.js')
 
 log.info(`Environment: ${process.env.NODE_ENV}`)
 

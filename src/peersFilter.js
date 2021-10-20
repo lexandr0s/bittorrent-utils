@@ -4,7 +4,8 @@ const process = require('process')
 const config = require('config')
 const semver = require('semver')
 const BitTorrent = require('./libs/BitTorrent.js')
-const {iteration, log} = require('./libs/utils.js')
+const {iteration} = require('./libs/utils.js')
+const log = require('./libs/log.js')
 
 const getClient = async (credentials, clientIndex) => {
     try {
