@@ -7,7 +7,7 @@
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "dev-manual-transfer": "cross-env NODE_ENV=development nodemon ./src/manualTransfer.js",
     "start": "npm install --only=prod && node -e \"console.clear()\" && cross-env NODE_ENV=production node index.js",
-    "start-containerized": "npm install --only=prod && node -e \"console.clear()\" && cross-env NODE_ENV=containerized node index.js",
+    "start-container": "npm install --only=prod && node -e \"console.clear()\" && cross-env NODE_ENV=container node index.js",
     "start-manual-transfer": "npm install --only=prod && node -e \"console.clear()\" && cross-env NODE_ENV=production node ./src/manualTransfer.js"
   },
   "author": "Yaroslav Sorochan <yaroslav.sorochan.i@gmail.com>",
