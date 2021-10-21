@@ -47,7 +47,7 @@ module.exports = {
         dir_torrent_files_flag: true,
         dir_torrent_files: 'torrents',
         dir_autoload_flag: true,
-        dir_autoload: 'torrents',
+        dir_autoload: 'torrents-autoload',
         dir_autoload_delete: true,
         'cache.read': false,
         'cache.write': false,
