@@ -39,7 +39,7 @@ module.exports = {
         seed_ratio: 0,
         max_dl_rate: 0,
         max_ul_rate: 0,
-        bind_port: 45327,
+        bind_port: 35000,
         rand_port_on_start: true,
         upnp: true,
         start_minimized: false,
