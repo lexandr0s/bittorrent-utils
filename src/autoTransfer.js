@@ -2,7 +2,7 @@ const config = require('config')
 const colors = require('colors')
 const inAppTransfer = require('./libs/inAppTransfer.js')
 const ledgerRPC = require('./libs/ledgerRPC.js')
-const BitTorrentSpeed = require('./libs/BitTorrentSpeed.js')
+const bitTorrentSpeed = require('./libs/BitTorrentSpeed.js')
 const {UBTTtoBTT, iteration} = require('./libs/utils.js')
 const log = require('./libs/log.js')
 
@@ -13,7 +13,7 @@ const getPayers = async () => {
     try {
         const configValue = config.get('AUTOTRANSFER_FROM')
         if (configValue === 'auto') {
-            const payer = await new BitTorrentSpeed().getPrivateKey()
+            const payer = await bitTorrentSpeed.getPrivateKey()
             log.info(`Local client private key: ${payer}`)
             return [payer]
         } else return configValue

@@ -11,7 +11,8 @@ module.exports = {
         GUI_URL: 'http://localhost:8080/gui/',   
         USERNAME: 'yourusername',                
         PASSWORD: 'yourpassword',                
-        IPFILTER_FILE_PATH: 'auto'
+        IPFILTER_FILE_PATH: 'auto',
+        BITTORRENT_SPEED_PORT_FILE_PATH: 'auto'
     }, {
         GUI_URL: 'https://yourdomain.com/gui/',
         USERNAME: 'yourusername',

@@ -1,33 +1,37 @@
 const fs = require('fs/promises')
 const {env: ENV} = require('process')
 const path = require('path')
-const URL = require('url').URL
+const {URL} = require('url')
 const fetch = require('node-fetch')
 const log = require('./log.js')
+const config = require('config')
 
-module.exports = class {
+module.exports = new class BitTorrentSpeed {
     constructor() {
         this.apiUrlWithoutPort = 'http://127.0.0.1/api/'
         this.port = null
         this.token = null
         this.privateKey = null
+        this.getPortFirtRunTime = null
+        const clientWithBitTorrentSpeedPortFilePath = config.get('CLIENTS').find(item => typeof item.BITTORRENT_SPEED_PORT_FILE_PATH === 'string')
+        if (clientWithBitTorrentSpeedPortFilePath) this.portFilePath = clientWithBitTorrentSpeedPortFilePath.BITTORRENT_SPEED_PORT_FILE_PATH
     }
 
     getPort = async () => {
         if (this.port !== null) return this.port
+
+        const portFilePath = this.portFilePath === 'auto' || this.portFilePath === undefined ? path.join(ENV.LOCALAPPDATA, '/BitTorrentHelper/port') : this.portFilePath    
         
-        const portFilePath = path.join(ENV.LOCALAPPDATA, '/BitTorrentHelper/port')
-        
-        const waitForPortFile = async (ms) => {
-            try {
-                return await fs.access(portFilePath)
-            } catch (error) {
-                await new Promise(resolve => setTimeout(resolve, ms))
-                return waitForPortFile()
-            }
+        if (!this.getPortFirtRunTime) this.getPortFirtRunTime = new Date()
+        else if (new Date() - this.getPortFirtRunTime > 30 * 1000) throw new Error(`${portFilePath} not found`)
+
+        try {
+            await fs.access(portFilePath)
+        } catch (error) {
+            log.warn(`${portFilePath} not found`)
+            await new Promise(resolve => setTimeout(resolve, 5000))
+            return this.getPort()
         }
-        
-        await waitForPortFile(5000)
 
         const portFileData = await fs.readFile(portFilePath, 'UTF-8')
         const port = parseInt(portFileData)  
