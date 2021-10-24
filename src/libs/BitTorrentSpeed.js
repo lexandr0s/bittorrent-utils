@@ -18,17 +18,15 @@ module.exports = new class BitTorrentSpeed {
     }
 
     getPort = async () => {
-        if (this.port !== null) return this.port
+        if (this.port !== null) return this.port        
+        if (!this.getPortFirtRunTime) this.getPortFirtRunTime = new Date()
 
         const portFilePath = this.portFilePath === 'auto' || this.portFilePath === undefined ? path.join(ENV.LOCALAPPDATA, '/BitTorrentHelper/port') : this.portFilePath    
-        
-        if (!this.getPortFirtRunTime) this.getPortFirtRunTime = new Date()
-        else if (new Date() - this.getPortFirtRunTime > 30 * 1000) throw new Error(`${portFilePath} not found`)
 
         try {
             await fs.access(portFilePath)
         } catch (error) {
-            log.warn(`${portFilePath} not found`)
+            log.warn(`${portFilePath} not found, ${(new Date() - this.getPortFirtRunTime) / 1000}s of waiting...`)
             await new Promise(resolve => setTimeout(resolve, 5000))
             return this.getPort()
         }
