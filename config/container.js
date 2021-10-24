@@ -8,10 +8,10 @@ module.exports = {
     AUTOTRANSFER_HISTORY_AGE_HOURS:     ENV.AUTOTRANSFER_HISTORY_AGE_HOURS             ? parseInt(ENV.AUTOTRANSFER_HISTORY_AGE_HOURS)                 : 24,
   
     CLIENTS: [{  
-        GUI_URL: 'http://localhost:80/gui/',     
-        USERNAME: 'bittorrent',                  
-        PASSWORD: 'bittorrent',                  
-        IPFILTER_FILE_PATH: 'auto'  
+        GUI_URL:                        ENV.CLIENT_GUI_URL                             ? ENV.CLIENT_GUI_URL                                           : 'http://localhost:80/gui/',     
+        USERNAME:                       ENV.CLIENT_USERNAME                            ? ENV.CLIENT_USERNAME                                          : 'bittorrent',                  
+        PASSWORD:                       ENV.CLIENT_PASSWORD                            ? ENV.CLIENT_PASSWORD                                          : 'bittorrent',                  
+        IPFILTER_FILE_PATH:             ENV.CLIENT_IPFILTER_FILE_PATH                  ? ENV.CLIENT_IPFILTER_FILE_PATH                                : 'auto'  
     }],  
   
     PEERS_FILTER_INTERVAL_SECONDS:      ENV.PEERS_FILTER_INTERVAL_SECONDS              ? parseInt(ENV.PEERS_FILTER_INTERVAL_SECONDS)                  : 3,

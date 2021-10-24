@@ -10,13 +10,17 @@ const recipientKey = config.get('AUTOTRANSFER_TO')
 const historyAgeHours = config.get('AUTOTRANSFER_HISTORY_AGE_HOURS')
 
 const getPayers = async () => {
-    const configValue = config.get('AUTOTRANSFER_FROM')
-
-    if (configValue === 'auto') {
-        const payer = await new BitTorrentSpeed().getPrivateKey()
-        log.info(`Payer private key: ${payer}`)
-        return [payer]
-    } else return configValue
+    try {
+        const configValue = config.get('AUTOTRANSFER_FROM')
+        if (configValue === 'auto') {
+            const payer = await new BitTorrentSpeed().getPrivateKey()
+            log.info(`Local client private key: ${payer}`)
+            return [payer]
+        } else return configValue
+    } catch (error) {
+        log.error(error)
+        return []
+    }
 }
 
 const Hisotry = class {

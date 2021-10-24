@@ -29,8 +29,12 @@ const setSettings = async (client, clientIndex) => {
 }
 
 const disableTokensSpending = async () => {
-    await new BitTorrentSpeed().disableTokensSpending()
-    log.info(`Tokens spending disabled on local client`)
+    try {
+        await new BitTorrentSpeed().disableTokensSpending()
+        log.info(`Tokens spending disabled on local client`)
+    } catch (error) {
+        log.error(error)
+    }
 }
 
 module.exports.start = async () => {

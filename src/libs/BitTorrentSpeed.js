@@ -55,21 +55,11 @@ module.exports = class {
     }
 
     #authorizedRequest = async (url, options) => {
-        try {
-            const token =  await this.getToken()
-            url.searchParams.set('t', token)
-            const response = await fetch(url.href, options)
-            if (response.status !== 200) throw new Error(response.statusText)
-            else return response.text()
-        } catch (error) {
-            if (error.code === 'ECONNREFUSED') {
-                log.debug(`${url} not responding, retry after 5 sec...`)
-                await new Promise(resolve => setTimeout(resolve, 5000))
-                return this.#authorizedRequest(url, options)
-            } else {
-                throw error
-            }
-        }
+        const token =  await this.getToken()
+        url.searchParams.set('t', token)
+        const response = await fetch(url.href, options)
+        if (response.status !== 200) throw new Error(response.statusText)
+        else return response.text()
     }
 
     setPassword = async (password = Math.random().toString(36).slice(-8)) => {
