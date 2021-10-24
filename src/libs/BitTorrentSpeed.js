@@ -15,7 +15,7 @@ module.exports = new class BitTorrentSpeed {
         this.getPortFirtRunTime = null
         const clientWithBitTorrentSpeedPortFilePath = config.get('CLIENTS').find(item => typeof item.BITTORRENT_SPEED_PORT_FILE_PATH === 'string')
         if (clientWithBitTorrentSpeedPortFilePath) this.portFilePath = clientWithBitTorrentSpeedPortFilePath.BITTORRENT_SPEED_PORT_FILE_PATH
-        console.log(this.portFilePath)
+        console.warn(this.portFilePath)
     }
 
     getPort = async () => {
