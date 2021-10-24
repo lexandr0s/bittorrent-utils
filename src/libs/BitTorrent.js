@@ -1,5 +1,6 @@
 const URL = require('url').URL
 const fetch = require('node-fetch')
+const log = require('./log.js')
 
 module.exports = class {
     constructor({guiUrl, username, password}) {
@@ -12,14 +13,26 @@ module.exports = class {
 
     async login() {
         const url = new URL('token.html', this.guiUrl)
-        const response = await fetch(url.href, {
-            headers: {Authorization: 'Basic ' + Buffer.from(`${this.username}:${this.password}`).toString('base64')}
-        })
-        if (response.status !== 200) throw new Error(response.statusText)
-        const responseBody = await response.text()
-        this.guid = response.headers.get('set-cookie').match(/(?<=GUID=)\S+?(?=\b)/)[0]
-        this.token = responseBody.match(/(?<=>)\S+?(?=<)/)[0]
-        return this
+        if (!this.loginFirtRunTime) this.loginFirtRunTime = new Date()
+        
+        try {
+            const response = await fetch(url.href, {
+                headers: {Authorization: 'Basic ' + Buffer.from(`${this.username}:${this.password}`).toString('base64')}
+            })
+            if (response.status !== 200) throw new Error(response.statusText)
+            const responseBody = await response.text()
+            this.guid = response.headers.get('set-cookie').match(/(?<=GUID=)\S+?(?=\b)/)[0]
+            this.token = responseBody.match(/(?<=>)\S+?(?=<)/)[0]
+            return this
+        } catch (error) {
+            if (error.code === 'ECONNREFUSED') {
+                log.warn(`${url.href} not responding, retry in 5 seconds...`)
+                await new Promise(resolve => setTimeout(resolve, 5000))
+                return this.login()
+            } else {
+                throw error
+            }
+        }
     }
 
     async #authorizedRequest(url) {

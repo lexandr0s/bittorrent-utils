@@ -12,22 +12,19 @@ module.exports = new class BitTorrentSpeed {
         this.port = null
         this.token = null
         this.privateKey = null
-        this.getPortFirtRunTime = null
         const clientWithBitTorrentSpeedPortFilePath = config.get('CLIENTS').find(item => typeof item.BITTORRENT_SPEED_PORT_FILE_PATH === 'string')
         if (clientWithBitTorrentSpeedPortFilePath) this.portFilePath = clientWithBitTorrentSpeedPortFilePath.BITTORRENT_SPEED_PORT_FILE_PATH
-        console.warn(this.portFilePath)
     }
 
     getPort = async () => {
         if (this.port !== null) return this.port        
-        if (!this.getPortFirtRunTime) this.getPortFirtRunTime = new Date()
 
         const portFilePath = this.portFilePath === 'auto' || this.portFilePath === undefined ? path.join(ENV.LOCALAPPDATA, '/BitTorrentHelper/port') : this.portFilePath    
 
         try {
             await fs.access(portFilePath)
         } catch (error) {
-            log.warn(`${portFilePath} not found, ${(new Date() - this.getPortFirtRunTime) / 1000}s of waiting...`)
+            log.warn(`${portFilePath} not found, retry in 5 seconds...`)
             await new Promise(resolve => setTimeout(resolve, 5000))
             return this.getPort()
         }
@@ -58,11 +55,21 @@ module.exports = new class BitTorrentSpeed {
     }
 
     #authorizedRequest = async (url, options) => {
-        const token =  await this.getToken()
-        url.searchParams.set('t', token)
-        const response = await fetch(url.href, options)
-        if (response.status !== 200) throw new Error(response.statusText)
-        else return response.text()
+        try {
+            const token =  await this.getToken()
+            url.searchParams.set('t', token)
+            const response = await fetch(url.href, options)
+            if (response.status !== 200) throw new Error(response.statusText)
+            else return response.text()
+        } catch (error) {
+            if (error.code === 'ECONNREFUSED') {
+                log.warn(`${url.href} not responding, retry in 5 seconds...`)
+                await new Promise(resolve => setTimeout(resolve, 5000))
+                return this.#authorizedRequest(url, options)
+            } else {
+                throw error
+            }
+        }
     }
 
     setPassword = async (password = Math.random().toString(36).slice(-8)) => {
