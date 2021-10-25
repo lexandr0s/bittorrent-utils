@@ -44,7 +44,7 @@ module.exports = {
         dir_torrent_files_flag:          ENV.AUTOCONFIG_SETTINGS_DIR_TORRENT_FILES_FLAG   ? parseBoolean(ENV.AUTOCONFIG_SETTINGS_DIR_TORRENT_FILES_FLAG)   : true,
         dir_torrent_files:               ENV.AUTOCONFIG_SETTINGS_DIR_TORRENT_FILES        ? ENV.AUTOCONFIG_SETTINGS_DIR_TORRENT_FILES                      : 'data/torrents',
         dir_autoload_flag:               ENV.AUTOCONFIG_SETTINGS_DIR_AUTOLOAD_FLAG        ? parseBoolean(ENV.AUTOCONFIG_SETTINGS_DIR_AUTOLOAD_FLAG)        : true,
-        dir_autoload:                    ENV.AUTOCONFIG_SETTINGS_DIR_AUTOLOAD             ? ENV.AUTOCONFIG_SETTINGS_DIR_AUTOLOAD                           : 'data/torrents-autoload',
+        dir_autoload:                    ENV.AUTOCONFIG_SETTINGS_DIR_AUTOLOAD             ? ENV.AUTOCONFIG_SETTINGS_DIR_AUTOLOAD                           : 'data/autoload',
         dir_autoload_delete:             ENV.AUTOCONFIG_SETTINGS_DIR_AUTOLOAD_DELETE      ? parseBoolean(ENV.AUTOCONFIG_SETTINGS_DIR_AUTOLOAD_DELETE)      : true,
         dir_active_download_flag:        ENV.AUTOCONFIG_SETTINGS_DIR_ACTIVE_DOWNLOAD_FLAG ? parseBoolean(ENV.AUTOCONFIG_SETTINGS_DIR_ACTIVE_DOWNLOAD_FLAG) : true,
         dir_active_download:             ENV.AUTOCONFIG_SETTINGS_DIR_ACTIVE_DOWNLOAD      ? ENV.AUTOCONFIG_SETTINGS_DIR_ACTIVE_DOWNLOAD                    : 'data/downloads',
