@@ -24,7 +24,7 @@ module.exports = new class BitTorrentSpeed {
         try {
             await fs.access(portFilePath)
         } catch (error) {
-            log.warn(`${portFilePath} not found, retry in 5 seconds...`)
+            log.debug(`${portFilePath} not found, retry in 5 seconds...`)
             await new Promise(resolve => setTimeout(resolve, 5000))
             return this.getPort()
         }
@@ -63,7 +63,7 @@ module.exports = new class BitTorrentSpeed {
             else return response.text()
         } catch (error) {
             if (error.code === 'ECONNREFUSED') {
-                log.warn(`${url.href} not responding, retry in 5 seconds...`)
+                log.debug(`${url.href} not responding, retry in 5 seconds...`)
                 await new Promise(resolve => setTimeout(resolve, 5000))
                 return this.#authorizedRequest(url, options)
             } else {

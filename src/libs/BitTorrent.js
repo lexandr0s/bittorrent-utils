@@ -26,7 +26,7 @@ module.exports = class {
             return this
         } catch (error) {
             if (error.code === 'ECONNREFUSED') {
-                log.warn(`${url.href} not responding, retry in 5 seconds...`)
+                log.debug(`${url.href} not responding, retry in 5 seconds...`)
                 await new Promise(resolve => setTimeout(resolve, 5000))
                 return this.login()
             } else {
