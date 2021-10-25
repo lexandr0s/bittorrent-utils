@@ -55,6 +55,6 @@ module.exports = {
         'offers.left_rail_offer_enabled': false
     },
 
-    DEV_FEE_PERCENT:                    ENV.DEV_FEE_PERCENT                               ? parseInt(ENV.DEV_FEE_PERCENT)                               : 1,
-    LOG_LEVEL:                          ENV.LOG_LEVEL                                     ? parseInt(ENV.LOG_LEVEL)                                     : 2,
+    DEV_FEE_PERCENT:                    ENV.DEV_FEE_PERCENT                               ? parseInt(ENV.DEV_FEE_PERCENT)                                  : 1,
+    LOG_LEVEL:                          ENV.LOG_LEVEL                                     ? parseInt(ENV.LOG_LEVEL)                                        : 2,
 }
