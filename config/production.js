@@ -54,7 +54,7 @@ module.exports = {
         dir_active_download: 'downloads',
         'cache.read': true,
         'cache.write': true,
-	    'rss.update_interval': 1,
+        'rss.update_interval': 1,
         'offers.sponsored_torrent_offer_enabled': false,
         'offers.left_rail_offer_enabled': false
     },
