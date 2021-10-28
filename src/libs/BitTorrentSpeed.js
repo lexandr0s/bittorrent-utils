@@ -1,4 +1,4 @@
-const fs = require('fs/promises')
+const fs = require('fs')
 const {env: ENV} = require('process')
 const path = require('path')
 const {URL} = require('url')
@@ -22,14 +22,14 @@ module.exports = new class BitTorrentSpeed {
         const portFilePath = this.portFilePath === 'auto' || this.portFilePath === undefined ? path.join(ENV.LOCALAPPDATA, '/BitTorrentHelper/port') : this.portFilePath    
 
         try {
-            await fs.access(portFilePath)
+            fs.accessSync(portFilePath)
         } catch (error) {
             log.debug(`${portFilePath} not found, retry in 5 seconds...`)
             await new Promise(resolve => setTimeout(resolve, 5000))
             return this.getPort()
         }
 
-        const portFileData = await fs.readFile(portFilePath, 'UTF-8')
+        const portFileData = fs.readFileSync(portFilePath, 'UTF-8')
         const port = parseInt(portFileData)  
         
         this.port = port
@@ -54,7 +54,7 @@ module.exports = new class BitTorrentSpeed {
         return token
     }
 
-    #authorizedRequest = async (url, options) => {
+    authorizedRequest = async (url, options) => {
         try {
             const token =  await this.getToken()
             url.searchParams.set('t', token)
@@ -65,7 +65,7 @@ module.exports = new class BitTorrentSpeed {
             if (error.code === 'ECONNREFUSED') {
                 log.debug(`${url.href} not responding, retry in 5 seconds...`)
                 await new Promise(resolve => setTimeout(resolve, 5000))
-                return this.#authorizedRequest(url, options)
+                return this.authorizedRequest(url, options)
             } else {
                 throw error
             }
@@ -75,7 +75,7 @@ module.exports = new class BitTorrentSpeed {
     setPassword = async (password = Math.random().toString(36).slice(-8)) => {
         const url = await this.getApiUrl()
         url.pathname += 'password'
-        await this.#authorizedRequest(url, {
+        await this.authorizedRequest(url, {
             method: 'POST',
             body: Buffer.from(password)
         })
@@ -87,14 +87,14 @@ module.exports = new class BitTorrentSpeed {
         const url = await this.getApiUrl()
         url.pathname += 'private_key'
         url.searchParams.set('pw', password)
-        this.privateKey = await this.#authorizedRequest(url)
+        this.privateKey = await this.authorizedRequest(url)
         return this.privateKey
     }
 
     disableTokensSpending = async () => {
         const url = await this.getApiUrl()
         url.pathname += 'store/spend'
-        return this.#authorizedRequest(url, {
+        return this.authorizedRequest(url, {
             method: 'POST',
             body: Buffer.from('false')
         })

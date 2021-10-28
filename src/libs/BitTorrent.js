@@ -35,7 +35,7 @@ module.exports = class {
         }
     }
 
-    async #authorizedRequest(url) {
+    async authorizedRequest(url) {
         if (this.token === null || this.guid === null) await this.login()
         url.searchParams.set('token', this.token)
         const response = await fetch(url.href, { headers: {
@@ -53,7 +53,7 @@ module.exports = class {
     async getList() {
         const url = new URL(this.guiUrl)
         url.searchParams.set('list', 1)
-        const list = await this.#authorizedRequest(url)
+        const list = await this.authorizedRequest(url)
         return list.torrents.map(item => ({
             hash: item[0],
             status: item[1],
@@ -84,7 +84,7 @@ module.exports = class {
         if (!Array.isArray(hashes)) hashes = [hashes]
         url.searchParams.set('action', 'getpeers')
         for (let hash of hashes) url.searchParams.append('hash', hash)
-        const response = await this.#authorizedRequest(url)
+        const response = await this.authorizedRequest(url)
         if (response.peers) return response.peers.filter(item => Array.isArray(item) && item.length).flat().map(peer => ({
             region: peer[0],
             ip: peer[1],
@@ -101,13 +101,13 @@ module.exports = class {
         if (deleteFiles) url.searchParams.set('action', 'removedata')
         else url.searchParams.set('action', 'remove')
         for (let hash of hashes) url.searchParams.append('hash', hash)
-        return await this.#authorizedRequest(url)
+        return await this.authorizedRequest(url)
     }
 
     async getSettings() {
         const url = new URL(this.guiUrl)
         url.searchParams.set('action', 'getsettings')
-        return (await this.#authorizedRequest(url)).settings
+        return (await this.authorizedRequest(url)).settings
     }
 
     async setSettings(settings) {
@@ -117,6 +117,6 @@ module.exports = class {
             url.searchParams.append('s', option)
             url.searchParams.append('v', settings[option])
         }
-        return await this.#authorizedRequest(url)
+        return await this.authorizedRequest(url)
     }
 }
